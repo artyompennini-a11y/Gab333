@@ -7,7 +7,7 @@ let handler = async (m, { conn }) => {
 
   await conn.sendMessage(m.chat, {
     text:
-`╔═ 🎰 𝐂𝐀𝐒𝐈𝐍𝐎 𝟑𝟑𝟑 ═╗
+`╔═ 🎰 𝐂𝐀𝐒𝐈𝐍𝐎 𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃 ═╗
 ┃
 ┃ 💸 *Benvenuto nel paradiso*
 ┃ *della rovina economica*
@@ -29,7 +29,7 @@ let handler = async (m, { conn }) => {
 ╚══════════════╝
 
 👇 𝐒𝐜𝐞𝐠𝐥𝐢 𝐢𝐥 𝐠𝐢𝐨𝐜𝐨 𝐚 𝐜𝐮𝐢 𝐠𝐢𝐨𝐜𝐚𝐫𝐞`,
-    footer: "𝟑𝟑𝟑 𝐂𝐀𝐒𝐈𝐍𝐎",
+    footer: "𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃 𝐂𝐀𝐒𝐈𝐍𝐎",
     buttons: [
       { buttonId: ".roulette", buttonText: { displayText: "🎯 𝐑𝐨𝐮𝐥𝐞𝐭𝐭𝐞" }, type: 1 },
       { buttonId: ".dadi", buttonText: { displayText: "🎲 𝐃𝐚𝐝𝐢" }, type: 1 },
