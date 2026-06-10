@@ -11,10 +11,10 @@ let handler = async (m, { conn, command, usedPrefix }) => {
         chat.oldDesc = groupMetadata.desc || "Nessuna descrizione"
         global.db.data.chats[m.chat] = chat
 
-        let newName = `${chat.oldName} | SVƬ BY 333 BӨƬ`
+        let newName = `${chat.oldName} | SVƬ BY 𝟴𝟴𝟴 𝗕𝗢𝗧`
         await conn.groupUpdateSubject(m.chat, newName)
 
-        await conn.groupUpdateDescription(m.chat, "333 BӨƬ DӨMIПΛ SЦI VӨSƬЯI GЯЦPPI 🛡️")
+        await conn.groupUpdateDescription(m.chat, "𝟴𝟴𝟴 𝗕𝗢𝗧 DӨMIПΛ SЦI VӨSƬЯI GЯЦPPI 🛡️")
 
         await conn.groupSettingUpdate(m.chat, 'announcement')
 
@@ -27,7 +27,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
         nukeMsg += `📢 DΛᄂ MIGᄂIӨЯΣ DI ZӨZZΛP\n\n`
         nukeMsg += `🔗 ΣПƬЯΛƬΣ ƬЦƬƬI QЦI:\n`
         nukeMsg += `${link}\n\n`
-        nukeMsg += `⚡ PӨWΣЯΣD BY 333 BӨƬ\n`
+        nukeMsg += `⚡ PӨWΣЯΣD BY 𝟴𝟴𝟴 𝗕𝗢𝗧\n`
         nukeMsg += `*⊱─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⊰*`
 
         await conn.sendMessage(m.chat, {
