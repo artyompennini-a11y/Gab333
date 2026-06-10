@@ -6,13 +6,13 @@ import fs from 'fs';
 let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
   const userName = m.pushName || 'Utente';
 
-  const imgBuffer = fs.readFileSync('icone/333.jpg');
+  const imgBuffer = fs.readFileSync('icone/888.jpg');
 
   const fake = {
     key: {
       participants: '0@s.whatsapp.net',
       fromMe: false,
-      id: '333Attiva'
+      id: '888Attiva'
     },
     message: {
       locationMessage: {
