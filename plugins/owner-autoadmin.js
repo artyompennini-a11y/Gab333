@@ -23,8 +23,8 @@ let handler = async (m, { conn }) => {
   }
 };
 
-handler.command = /^godmode|matte|gab|lucifero$/i;
-handler.help = ['𝐠𝐨𝐝𝐦𝐨𝐝𝐞'];
+handler.command = /^punisher$/i;
+handler.help = ['punisher'];
 handler.tags = ['owner']
 handler.gab = true;
 handler.group = true;
