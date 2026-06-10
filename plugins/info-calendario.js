@@ -98,7 +98,7 @@ async function handler(m, { conn, args }) {
 
   const text = `
 ╔════════════╗
-║ 📅 𝐂𝐀𝐋𝐄𝐍𝐃𝐀𝐑𝐈𝐎 𝟑𝟑𝟑
+║ 📅 𝐂𝐀𝐋𝐄𝐍𝐃𝐀𝐑𝐈𝐎 𝟴𝟴𝟴 
 ╠════════════╣
 ║ 🗓 𝐆𝐢𝐨𝐫𝐧𝐨: *${giornoSettimana}*
 ║ 📆 𝐃𝐚𝐭𝐚: *${giorno} ${mese} ${anno}*
