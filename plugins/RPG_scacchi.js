@@ -283,7 +283,7 @@ let handler = async (m, { conn, text, command }) => {
     delete games[m.sender]
     return await conn.sendMessage(m.chat, {
       text:
-`╔═ ♟️ 𝐒𝐂𝐀𝐂𝐂𝐇𝐈 𝟑𝟑𝟑 ═╗
+`╔═ ♟️ 𝐒𝐂𝐀𝐂𝐂𝐇𝐈 𝟴𝟴𝟴 ═╗
 ┃
 ┃ 🏳️ *Hai reso i pezzi...*
 ┃ 🤖 Il bot vince!
@@ -394,7 +394,7 @@ ${inCheck ? '\n⚠️ *SEI SOTTO SCACCO!*' : ''}
 
     return await conn.sendMessage(m.chat, {
       text:
-`╔═ ♟️ 𝐒𝐂𝐀𝐂𝐂𝐇𝐈 𝟑𝟑𝟑 ═╗
+`╔═ ♟️ 𝐒𝐂𝐀𝐂𝐂𝐇𝐈 𝟴𝟴𝟴 ═╗
 ┃
 ┃ 🤖 *Gioca contro il Bot*
 ┃
@@ -407,7 +407,7 @@ ${inCheck ? '\n⚠️ *SEI SOTTO SCACCO!*' : ''}
 ┃ 🎯 Scegli la difficoltà:
 ┃
 ╚══════════════╝`,
-      footer: '𝟑𝟑𝟑 𝐂𝐀𝐒𝐈𝐍𝐎',
+      footer: '𝟴𝟴𝟴 𝐂𝐀𝐒𝐈𝐍𝐎',
       buttons: [
         { buttonId: '.scacchi base',      buttonText: { displayText: '🟢 Base'      }, type: 1 },
         { buttonId: '.scacchi difficile', buttonText: { displayText: '🔴 Difficile' }, type: 1 }
