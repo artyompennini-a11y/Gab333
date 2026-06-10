@@ -1,4 +1,4 @@
-//Plugin by Gab, Lucifero & 333 staff
+
 
 
 const handler = async (m, { conn }) => {
@@ -15,7 +15,7 @@ const handler = async (m, { conn }) => {
   }
 
   const msg = await conn.sendMessage(m.chat,{
-    text:`╭──〔𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃 𝐀𝐕𝐕𝐈𝐀𝐓𝐎〕──╮
+    text:`╭──〔𝟴𝟴𝟴 𝗕𝗢𝗧 𝐀𝐕𝐕𝐈𝐀𝐓𝐎〕──╮
 
 ⌛ 𝐀𝐯𝐯𝐢𝐨 𝐬𝐜𝐚𝐧𝐬𝐢𝐨𝐧𝐞 𝐠𝐫𝐮𝐩𝐩𝐨...
 
@@ -24,7 +24,7 @@ ${progress(5)}`
 
   async function update(percent,text){
     await conn.sendMessage(m.chat,{
-      text:`╭──〔𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃 𝐀𝐕𝐕𝐈𝐀𝐓𝐎〕──╮
+      text:`╭──〔𝟴𝟴𝟴 𝗕𝗢𝗧 𝐀𝐕𝐕𝐈𝐀𝐓𝐎〕──╮
 
 ⌛ ${text}
 
