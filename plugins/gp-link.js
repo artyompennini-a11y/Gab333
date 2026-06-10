@@ -27,13 +27,13 @@ let handler = async (m, { conn, usedPrefix, command }) => {
                 message: {
                     interactiveMessage: {
                         header: {
-                            title: "⚡️ 𝟑𝟑𝟑𝐁𝐎𝐓 • 𝐋𝐈𝐍𝐊",
+                            title: "⚡️ 𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃 • 𝐋𝐈𝐍𝐊",
                             hasMediaAttachment: false
                         },
                         body: {
                             text: `╭─────────╮  
 ┃ 📢 𝐋𝐈𝐍𝐊 𝐔𝐅𝐅𝐈𝐂𝐈𝐀𝐋𝐄
-┃ ꙰  𝟥𝟥𝟥 𝔹𝕆𝕋  ꙰
+┃ ꙰  𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃  ꙰
 ┃━━━━━━━━━━━━━━
 ┃⮕ 𝐆𝐫𝐮𝐩𝐩𝐨: ${groupName}
 ┃
@@ -43,7 +43,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ╰─────────╯`
                         },
                         footer: {
-                            text: "💡 𝟑𝟑𝟑𝐁𝐎𝐓"
+                            text: "💡 𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃"
                         },
                         nativeFlowMessage: {
                             buttons: interactiveButtons
