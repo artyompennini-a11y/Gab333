@@ -40,7 +40,7 @@ contextInfo: {
 externalAdReply: {
 title: '𝐒𝐓𝐀𝐅𝐅 𝟴𝟴𝟴 𝗕𝗢𝗧',
 body: '𝐞𝐧𝐭𝐫𝐚 𝐧𝐞𝐥 𝐜𝐚𝐧𝐚𝐥𝐞 𝐝𝐢 𝟴𝟴𝟴 𝗕𝗢𝗧!',
-sourceUrl: 'https://whatsapp.com/channel/0029Vb7ptH62UPBKFFgByc3C',
+sourceUrl: 'https://whatsapp.com/channel/0029Vb7NyC67tkj0robcbw24',
 mediaType: 1,
 renderLargerThumbnail: true
 }
