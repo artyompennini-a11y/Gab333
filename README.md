@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌙 888-Bot
+# 🌙 888-BOT
 ### Next Generation WhatsApp Bot
 
 [![Italiano](https://img.shields.io/badge/🇮🇹_Italiano-blue?style=for-the-badge)](#-italiano) 
@@ -66,13 +66,13 @@ Crea una copia personale del bot sul tuo account GitHub:
 
 #### ⚙️ STEP 3: Configurazione
 
-1. Vai al file [`config.js`](https://github.com/888-BOT/artyompennini-a11y/blob/master/config.js)
+1. Vai al file [`config.js`](https://github.com/artyompennini-a11y/888-BOT/blob/main/config.js)
 2. Clicca sull'icona della matita ✏️ per modificare
 3. Trova la riga con il numero del proprietario
-4. Inserisci il **tuo numero WhatsApp** (formato internazionale: +39 350 833 7404)
+4. Inserisci il **tuo numero WhatsApp** (formato internazionale: +39 320 603 2199)
 5. Salva le modifiche
 
-<a href="https://github.com/GabWT333/Gab333/blob/master/config.js">
+<a href="https://github.com/artyompennini-a11y/888-BOT/blob/main/config.js">
   <img src="https://img.shields.io/badge/📝_MODIFICA_CONFIG.JS-blue?style=for-the-badge&logo=javascript" alt="Edit Config"/>
 </a>
 
