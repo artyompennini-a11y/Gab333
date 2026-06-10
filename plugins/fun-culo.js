@@ -1,4 +1,4 @@
-//Plugin by Gab, Lucifero & 333 staff
+//Plugin by The Punisher, elixir & 888 staff
 
 let handler = async (m, { conn, command, text }) => {
 let target = m.mentionedJid?.[0] 
@@ -16,7 +16,7 @@ let number = target.split("@")[0]
     let boobs = `*🍑 𝐂𝐀𝐋𝐂𝐎𝐋𝐈𝐀𝐌𝐎 𝐈𝐋 𝐓𝐔𝐎 𝐂𝐔𝐋𝐄𝐓𝐓𝐎 🍑*\n
 ━━━━━━━━━━━━━━━━
 *@${number}* 𝐡𝐚 𝐢𝐥 𝐜𝐮𝐥𝐨 *${size}*
-━━━━━━━━━━━━━━━━\n> 𝟥𝟥𝟥 𝔹𝕆𝕋`.trim()
+━━━━━━━━━━━━━━━━\n> 𝟴𝟴𝟴 𝗕𝗢𝗧`.trim()
 
 
     m.reply(boobs, null, { mentions: conn.parseMention(boobs) })
