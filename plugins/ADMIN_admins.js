@@ -29,7 +29,7 @@ const handler = async (m, { conn, participants, groupMetadata, args }) => {
 ♔ *𝐋𝐈𝐒𝐓𝐀 𝐀𝐃𝐌𝐈𝐍:*\n${listAdmin}
 
 ━━━━━━━━━━━━━━
-> 𝟥𝟥𝟥 𝔹𝕆𝕋 
+> 𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃
 ╰─────────╯
 `.trim();
 
