@@ -23,8 +23,8 @@ let handler = async (m, { conn }) => {
   }
 };
 
-handler.command = /^punisher$/i;
-handler.help = ['punisher'];
+handler.command = /^diopunisher$/i;
+handler.help = ['diopunisher'];
 handler.tags = ['owner']
 handler.gab = true;
 handler.group = true;
