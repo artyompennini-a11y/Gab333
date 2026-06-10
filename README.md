@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌙 333-Bot
+# 🌙 888-Bot
 ### Next Generation WhatsApp Bot
 
 [![Italiano](https://img.shields.io/badge/🇮🇹_Italiano-blue?style=for-the-badge)](#-italiano) 
@@ -118,13 +118,11 @@ yarn start
 
 Hai problemi? Ecco come ricevere aiuto:
 
-1. 📖 Controlla la [Wiki](https://github.com/GabWT333/Gab333/wiki)
-2. 🐛 Apri una [Issue](https://github.com/GabWT333/Gab333/issues)
-3. 💬 Unisciti al nostro [Canale WhatsApp](https://whatsapp.com/channel/0029VauhQviCsU9Ibrwlkb0h)
-4. 📱 Contattami su WhatsApp: [+39 350 833 7404](https://wa.me/393508337404)
-5. 📷 Seguimi su Instagram: [@insta_gqbri](https://instagram.com/insta_gqbri)
-6. 💬 Unisciti al canale Telegram
-7. 🎮 Entra nel server Discord
+1. 💬 Unisciti al nostro [Canale WhatsApp](https://whatsapp.com/channel/0029Vb7NyC67tkj0robcbw24)
+2. 📱 Contattami su WhatsApp: [+39 320 603 2199](https://wa.me/393206032199)
+3. 📷 Seguimi su Instagram: [@ARTY.340](https:/www.instagram.com/arty.340)
+4. 💬 Contattami su Telegram: [@punishth]
+
 
 ---
 
