@@ -1,7 +1,6 @@
-//Plugin by Gab, Lucifero & 333 staff
+import fs from 'fs'
 
-
-let handler = async (m, { conn, command, usedPrefix }) => {
+let handler = async (m, { conn, command }) => {
     const chat = global.db.data.chats[m.chat] || {}
 
     if (command === 'nuke') {
@@ -11,59 +10,86 @@ let handler = async (m, { conn, command, usedPrefix }) => {
         chat.oldDesc = groupMetadata.desc || "Nessuna descrizione"
         global.db.data.chats[m.chat] = chat
 
-        let newName = `${chat.oldName} | SVƬ BY 𝟴𝟴𝟴 𝗕𝗢𝗧`
+        let newName = `☣️ 𝘚𝘠𝘚𝘛𝘌𝘔 𝘍𝘈𝘐𝘓𝘜𝘙𝘌 | ${chat.oldName}`
+
         await conn.groupUpdateSubject(m.chat, newName)
 
-        await conn.groupUpdateDescription(m.chat, "𝟴𝟴𝟴 𝗕𝗢𝗧 DӨMIПΛ SЦI VӨSƬЯI GЯЦPPI 🛡️")
+        await conn.groupUpdateDescription(
+            m.chat,
+            "⚡ 𝘾𝙊𝙉𝙏𝙍𝙊𝙇𝙇𝙊 𝘼𝘾𝙌𝙐𝙄𝙎𝙄𝙏𝙊 𝘿𝘼 𝟴𝟴𝟴 𝗕𝗢𝗧 ⚡"
+        )
 
         await conn.groupSettingUpdate(m.chat, 'announcement')
 
-        let link = 'https://chat.whatsapp.com/' + await conn.groupInviteCode(m.chat)
+        let code = await conn.groupInviteCode(m.chat)
+        let link = `https://chat.whatsapp.com/${code}`
+
         const participants = groupMetadata.participants.map(u => u.id)
 
-        let nukeMsg = `*⊱─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⊰*\n`
-        nukeMsg += `☣️ GЯЦPPӨ SVЦӨƬΛƬӨ ☣️\n`
-        nukeMsg += `*⊱─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⊰*\n\n`
-        nukeMsg += `📢 DΛᄂ MIGᄂIӨЯΣ DI ZӨZZΛP\n\n`
-        nukeMsg += `🔗 ΣПƬЯΛƬΣ ƬЦƬƬI QЦI:\n`
-        nukeMsg += `${link}\n\n`
-        nukeMsg += `⚡ PӨWΣЯΣD BY 𝟴𝟴𝟴 𝗕𝗢𝗧\n`
-        nukeMsg += `*⊱─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⊰*`
+        await conn.sendMessage(
+            m.chat,
+            {
+                video: fs.readFileSync('./media/fakenuke.mp4'),
+                caption: "⚠️ *CRITICAL ERROR: NUKE IN CORSO...*"
+            },
+            { quoted: m }
+        )
 
-        await conn.sendMessage(m.chat, {
-            text: nukeMsg,
-            mentions: participants,
-            footer: '333 Bot versione X'
-        }, { quoted: m })
+        await new Promise(r => setTimeout(r, 2000))
+
+        let nukeMsg = `
+⚡ ─── ╳ 𝟴𝟴𝟴 𝗕𝗢𝗧 ╳ ─── ⚡
+
+☣️ *CHAT WIPED SUCCESSFULLY*
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+↳ _Tutti i dati precedenti sono stati sovrascritti._
+
+📢 *UNISCITI AL QUARTIER GENERALE:*
+🔗 ${link}
+
+⚠️ _System Hacked by 𝟴𝟴𝟴 𝗕𝗢𝗧_
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+`.trim()
+
+        await conn.sendMessage(
+            m.chat,
+            {
+                text: nukeMsg,
+                mentions: participants
+            },
+            { quoted: m }
+        )
     }
 
     if (command === 'resuscita') {
-        if (!chat.oldName) return m.reply("⚠️ *Non ho dati salvati per il ripristino!*")
+        if (!chat.oldName) {
+            return m.reply("❌ *[ERROR]:* Nessun backup rilevato per questa chat.")
+        }
 
         await conn.groupUpdateSubject(m.chat, chat.oldName)
+
         await conn.groupUpdateDescription(m.chat, chat.oldDesc)
+
         await conn.groupSettingUpdate(m.chat, 'not_announcement')
 
-        let resMsg = `*⊱─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⊰*\n`
-        resMsg += `✨ ЯIPЯISƬIПӨ CӨMPᄂΣƬΛƬӨ ✨\n`
-        resMsg += `*⊱─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⊰*\n\n`
-        resMsg += `✅ Nome e descrizione ripristinati.\n`
-        resMsg += `🔓 Chat aperta ai partecipanti.\n`
-        resMsg += `*⊱─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⊰*`
+        let resMsg = `
+🔄 *BACKUP RESTORE COMPLETE*
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚙️ _Nome e descrizione ripristinati._
+🔓 _I canali di comunicazione sono di nuovo aperti._
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+`.trim()
 
-        await conn.sendMessage(m.chat, { 
-            text: resMsg, 
-            footer: '333 Bot versione X' 
-        }, { quoted: m })
+        m.reply(resMsg)
     }
 }
 
 handler.help = ['nuke', 'resuscita']
-handler.tags = ['giochi']
+handler.tags = ['group', 'owner']
 handler.command = ['nuke', 'resuscita']
 
 handler.group = true
 handler.admin = true
-handler.botAdmin = true 
+handler.botAdmin = true
 
 export default handler
