@@ -128,7 +128,7 @@ async function epicStartup() {
   
   await sleep(300);
   
-  await typeWriterBig('888\nBOT V10\n2026', 120);
+  await typeWriterBig('ELIXIR\nBOT V10\n2026', 120);
   
   await sleep(400);
   
@@ -136,7 +136,7 @@ async function epicStartup() {
   await typeWriter('                     Ultimo Aggiornamento: 21/05/2026', 40, '\x1b[33m');
   
   console.log('\n');
-  await typeWriter('                    Edit by The punisher, Elixir', 35, '\x1b[36m');
+  await typeWriter('                    Edit by Elixir, Punisher & 888 Staff', 35, '\x1b[36m');
   
   console.log('\n\n');
   console.log('\x1b[90m' + '━'.repeat(70) + '\x1b[0m');
@@ -154,7 +154,7 @@ async function epicStartup() {
   console.log('\n');
   
   await sleep(200);
-  await pulse('                     #888NEVERDIES', 4);
+  await pulse('                     #ELIXIRNEVERDIES', 4);
   
   console.log('\n');
   console.log('\x1b[90m' + '━'.repeat(70) + '\x1b[0m');
@@ -223,4 +223,4 @@ async function start(file) {
   }
 }
 
-start('333.js');
+start('punisher.js');
