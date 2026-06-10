@@ -244,12 +244,12 @@ export async function sendImage(conn, m, buffer, caption = '', buttons = []) {
 
   const base = {
     caption,
-    footer: '333 BOT - Last.fm',
+    footer: ' 𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃 - Last.fm',
     contextInfo: {
       forwardedNewsletterMessageInfo: {
         newsletterJid: '120363341274693350@newsletter',
         serverMessageId: -1,
-        newsletterName: '333 BOT'
+        newsletterName: ' 𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃'
       }
     }
   };
