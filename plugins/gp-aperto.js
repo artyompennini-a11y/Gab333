@@ -1,17 +1,51 @@
-//Plugin by Gab, Lucifero & 333 staff
+let handler = async (m, { conn }) => {
+  
+  await conn.sendMessage(m.chat, { react: { text: '🔓', key: m.key } })
 
-let handler = async (m, { conn, args }) => {
-  let setting = { "": "not_announcement" }[args[0] || ""]
-  if (setting === undefined) return
-  await conn.groupSettingUpdate(m.chat, setting)
-  global.logAdmin?.increment?.(m.chat, m.sender, 'open')
-  conn.reply(m.chat, "𝐡𝐨 𝐚𝐩𝐞𝐫𝐭𝐨 𝐢𝐥 𝐠𝐫𝐮𝐩𝐩𝐨 𝐜𝐨𝐧 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐨! 𝐜𝐡𝐚𝐭 𝐚𝐩𝐞𝐫𝐭𝐚 𝐚 𝐭𝐮𝐭𝐭𝐢.\n\n> 𝐝𝐢𝐠𝐢𝐭𝐚 ’’.𝐜𝐡𝐢𝐮𝐝𝐢’’ 𝐩𝐞𝐫 𝐜𝐡𝐢𝐮𝐝𝐞𝐫𝐞 𝐥𝐚 𝐜𝐡𝐚𝐭 𝐚 𝐬𝐨𝐥𝐢 𝐚𝐝𝐦𝐢𝐧")
+  
+  await conn.groupSettingUpdate(m.chat, 'not_announcement')
+
+  const message = "« 🔓 »  *L'ARENA È APERTA*\n\n> *Il silenzio è rotto. La parola torna al popolo. Esprimetevi con saggezza.*"
+
+ 
+  const buttons = [
+    {
+      buttonId: '.chiuso',
+      buttonText: { displayText: '🔒 Chiudi Gruppo' },
+      type: 1
+    }
+  ]
+
+  const buttonMessage = {
+    text: message,
+    footer: '⚙️ Pannello Rapido Amministrazione',
+    buttons: buttons,
+    headerType: 1,
+    contextInfo: {
+      externalAdReply: {
+        title: '〔 ACCESS GRANTED 〕',
+        body: 'Gestionale Sistema 𝟴𝟴𝟴 𝗕𝗢𝗧',
+        thumbnailUrl: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=500', 
+        sourceUrl: '',
+        mediaType: 1,
+        renderLargerThumbnail: false
+      },
+      forwardingScore: 999,
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: `120363427251015414@newsletter',
+        newsletterName: `✦ ${global.db?.data?.nomedelbot || '𝟴𝟴𝟴 𝗕𝗢𝗧'} ✦`,
+        serverMessageId: 143
+      }
+    }
+  }
+
+  await conn.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
 
-handler.help = ["𝐚𝐩𝐫𝐢/𝐚𝐩𝐞𝐫𝐭𝐨"]
-handler.tags = ["admin"]
-handler.command = /^(aperto|apri)$/i
-handler.group = true
+handler.help = ['aperto']
+handler.tags = ['group']
+handler.command = ['aperto']
 handler.admin = true
 handler.botAdmin = true
 
