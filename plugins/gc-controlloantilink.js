@@ -44,11 +44,11 @@ Tutti i link verranno eliminati automaticamente.`;
         forwardedNewsletterMessageInfo: {
           newsletterJid: '120363341274693350@newsletter',
           serverMessageId: -1,
-          newsletterName: global.nomebot || '𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃'
+          newsletterName: global.nomebot || '𝟴𝟴𝟴 𝗕𝗢𝗧'
         },
         externalAdReply: {
           title: '『 𝐀𝐍𝐓𝐈 - 𝐋𝐈𝐍𝐊 』 𝐎𝐍',
-          body: 'Vai al canale 𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃',
+          body: 'Vai al canale 𝟴𝟴𝟴 𝗕𝗢𝗧',
           mediaType: 1,
           thumbnail: profilePic 
             ? await (await fetch(profilePic)).buffer() 
@@ -88,7 +88,7 @@ I link sono ora consentiti nel gruppo.`;
         },
         externalAdReply: {
           title: '『 𝐀𝐍𝐓𝐈 - 𝐋𝐈𝐍𝐊 』 𝐎𝐅𝐅',
-          body: 'Vai al canale 𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃',
+          body: 'Vai al canale 𝟴𝟴𝟴 𝗕𝗢𝗧',
           mediaType: 1,
           thumbnail: profilePic 
             ? await (await fetch(profilePic)).buffer() 
