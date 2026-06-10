@@ -1,7 +1,3 @@
-//Codice di menu-funzioni.js
-
-//Plugin by Gab, Lucifero & 333 staff
-
 import fs from 'fs'
 
 let handler = async (m, { conn, usedPrefix, isOwner, isROwner }) => {
@@ -21,7 +17,14 @@ let handler = async (m, { conn, usedPrefix, isOwner, isROwner }) => {
 
   const { antiprivato, soloCreatore, read, anticall } = bot
 
-  const imgBuffer = fs.readFileSync('icone/333.jpg')
+  // Gestione sicura del file immagine per evitare crash se non esiste
+  let imgBuffer
+  try {
+    imgBuffer = fs.readFileSync('icone/333.jpg')
+  } catch (e) {
+    // Buffer vuoto di fallback se l'immagine non viene trovata
+    imgBuffer = Buffer.alloc(0)
+  }
 
   const fake = {
     key: {
@@ -32,7 +35,7 @@ let handler = async (m, { conn, usedPrefix, isOwner, isROwner }) => {
     message: {
       locationMessage: {
         name: '⚙️ 𝐌𝐞𝐧𝐮 𝐅𝐮𝐧𝐳𝐢𝐨𝐧𝐢  𝟴𝟴𝟴 𝗕𝗢𝗧',
-        jpegThumbnail: imgBuffer.toString('base64'),
+        jpegThumbnail: imgBuffer, // Baileys vuole il Buffer diretto, non toString('base64')
         vcard: 'BEGIN:VCARD\nVERSION:3.0\nN:;333;;;\nFN:333\nEND:VCARD'
       }
     },
@@ -99,7 +102,7 @@ let handler = async (m, { conn, usedPrefix, isOwner, isROwner }) => {
 ┃${s(antilinktg)} ⮕ ${p}antilinktg
 ${catalogs}${ownerSection}
 ┃━━━━━━━━━━━━━━
-┃ ✅ = Attivo  ❌ = Disattivo
+┃ ✅ = Attivo   ❌ = Disattivo
 ┃━━━━━━━━━━━━━━
 ┃ ℹ️ 𝐔𝐒𝐎
 ┃ ${p}attiva antilink
