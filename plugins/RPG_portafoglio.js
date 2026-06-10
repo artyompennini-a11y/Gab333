@@ -258,7 +258,7 @@ const handler = async (m, { conn, args }) => {
       {
         image: imgBuffer,
         mimetype: 'image/jpeg',
-        caption: `💳 *333 Bank* — @${who.split('@')[0]}\n💰 Totale: ${total.toLocaleString('it-IT')} €`,
+        caption: `💳 *𝟴𝟴𝟴 𝗕𝗢𝗧* — @${who.split('@')[0]}\n💰 Totale: ${total.toLocaleString('it-IT')} €`,
         mentions: [who]
       },
       { quoted: m }
