@@ -57,7 +57,7 @@ const handler = async (m, { conn }) => {
 
   const image = fs.readFileSync('./icone/ping.png');
 
-  let nomeDelBot = global.db.data.nomedelbot || ' ꙰ 𝟥𝟥𝟥 𝔹𝕆𝕋  ꙰⇝';
+  let nomeDelBot = global.db.data.nomedelbot || '𝟴𝟴𝟴 𝗕𝗢𝗧';
 
   const prova = {
     key: { participants: "0@s.whatsapp.net", fromMe: false, id: "Halo" },
@@ -79,7 +79,7 @@ const handler = async (m, { conn }) => {
 
   await conn.sendMessage(m.chat, {
     text: info,
-    footer: "𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃",
+    footer: "𝟴𝟴𝟴 𝗕𝗢𝗧",
     buttons: [
       { buttonId: ".ds", buttonText: { displayText: "🧹 Elimina Sessioni" }, type: 1 }
     ],
