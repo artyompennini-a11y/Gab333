@@ -7,11 +7,11 @@ let handler = async (m, { conn, text, isOwner }) => {
   try {
     await m.react('⏳')
 
-  
+    
     execSync('git fetch', { stdio: 'ignore' })
     let status = execSync('git status -uno', { encoding: 'utf-8' })
 
-  
+ 
     if (status.includes('Your branch is up to date') || status.includes('Il tuo branch è aggiornato') || status.includes('nothing to commit')) {
       await m.react('✅')
       return conn.reply(m.chat, '✅ *Il bot è già aggiornato all\'ultima versione.*', m)
@@ -20,7 +20,7 @@ let handler = async (m, { conn, text, isOwner }) => {
   
     let updateOutput = execSync('git reset --hard && git pull --stat', { encoding: 'utf-8' })
 
-   
+    
     let fileDetails = parseGitFileDetails(updateOutput)
     let message = ''
 
@@ -52,23 +52,23 @@ function parseGitFileDetails(output) {
   const fileLineRegex = /^\s*(.+?)\s*\|\s*(\d+)\s+(.*)$/
 
   for (let line of lines) {
+   
+    if (line.includes('changed') && (line.includes('insertion') || line.includes('deletion'))) continue
+
     let match = line.match(fileLineRegex)
     if (match) {
       let name = match[1].trim()
-      let plusMinus = match[3]
+      let plusMinus = match[3].trim()
 
      
-      if (name.includes('file changed') || name.includes('files changed')) continue
-
       let ins = (plusMinus.match(/\+/g) || []).length
       let del = (plusMinus.match(/-/g) || []).length
 
-      
-      if (ins === 0 && del === 0 && plusMinus.includes('(+)') || plusMinus.includes('(-)')) {
-        let insMatch = plusMinus.match(/(\d+)\s*\(\+\)/)
-        let delMatch = plusMinus.match(/(\d+)\s*\(-\)/)
-        ins = insMatch ? parseInt(insMatch[1]) : 0
-        del = delMatch ? parseInt(delMatch[1]) : 0
+     
+      if (ins === 0 && del === 0) {
+        let totalChanges = parseInt(match[2])
+        
+        ins = totalChanges
       }
 
       files.push({ name, ins, del })
@@ -80,6 +80,6 @@ function parseGitFileDetails(output) {
 handler.help = ['aggiorna', 'update']
 handler.tags = ['creatore']
 handler.command = ['aggiorna', 'update', 'aggiornabot']
-handler.rowner = true // Forza il comando solo per i veri Owner del bot
+handler.rowner = true 
 
 export default handler
