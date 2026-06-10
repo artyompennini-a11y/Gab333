@@ -120,13 +120,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       msgRetryCache: msgRetryCounterCache,
       version: version || [2, 3000, 1015901827],
       syncFullHistory: false,
-      browser: useCode ? ['Ubuntu', 'Chrome', '20.0.0'] : ['333 Bot', 'Chrome', '2.0.0'],
+      browser: useCode ? ['Ubuntu', 'Chrome', '20.0.0'] : ['888 Bot', 'Chrome', '2.0.0'],
       getMessage: async (key) => {
         if (global.store) {
           const msg = global.store.loadMessage(key.remoteJid, key.id);
           return msg?.message || undefined;
         }
-        return { conversation: '333 Bot Active' };
+        return { conversation: '888 Bot Active' };
       }
     };
 
