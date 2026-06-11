@@ -41,7 +41,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   const vid = global.playChoice[m.sender]
   if (!vid) return m.reply("❌ Nessuna richiesta attiva. Cerca prima una canzone con .play")
 
-  // --- SEZIONE AUDIO ---
+  
   if (command === "playaud") {
     await conn.sendMessage(m.chat, { react: { text: "🎵", key: m.key } })
 
@@ -55,7 +55,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (!downloadUrl) {
       try {
-        // Corretto il path inserendo l'endpoint /api/ytmp3?url=
+        
         let res = await fetch(`https://vreden.my.id/api/ytmp3?url=${encodeURIComponent(url)}`)
         let json = await res.json()
         downloadUrl = json.result?.download?.url || json.result?.url || json.result?.downloadUrl
@@ -104,7 +104,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     }
   }
 
-  // --- SEZIONE VIDEO ---
+
   if (command === "playvid") {
     await conn.sendMessage(m.chat, { react: { text: "🎬", key: m.key } })
 
