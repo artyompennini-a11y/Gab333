@@ -166,7 +166,7 @@ let handler = async (m, { conn, args, participants, isAdmin, isBotAdmin, usedPre
                     
                     await conn.sendMessage(m.chat, {
                         text: timeoutText,
-                        footer: '𝟥𝟥𝟥 𝔹𝕆𝕋',
+                        footer: '𝟴𝟴𝟴 𝗕𝗢𝗧',
                         interactiveButtons: playAgainButtons()
                     }, { quoted: msg });
                     delete global.bandieraGame[m.chat];
