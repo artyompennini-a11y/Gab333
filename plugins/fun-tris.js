@@ -440,7 +440,7 @@ const sendGameMessage = async (conn, chat, game, status, isFirstMessage = false)
             image: buffer,
             caption: movesGuide,
             mentions: [game.p1, game.p2],
-            footer: '𝟥𝟥𝟥 𝔹𝕆𝕋',
+            footer: '𝟴𝟴𝟴 𝗕𝗢𝗧',
             buttons: interactiveButtons,
             headerType: 4
         });
