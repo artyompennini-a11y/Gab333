@@ -152,3 +152,12 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } finally {
       if (fs.existsSync(inputPath)) await fsPromises.unlink(inputPath)
       delete global.playChoice[m.sender]
+    }
+  }
+}
+
+handler.help = ['play']
+handler.tags = ['downloader']
+handler.command = /^(play|playaud|playvid)$/i
+
+export default handler
