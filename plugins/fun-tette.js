@@ -20,7 +20,7 @@ let number = target.split("@")[0]
     let boobs = `*🍒 𝐂𝐀𝐋𝐂𝐎𝐋𝐈𝐀𝐌𝐎 𝐋𝐄 𝐓𝐔𝐄 𝐁𝐎𝐎𝐁𝐒 🍒*\n
 ━━━━━━━━━━━━━━━━
 *@${number}* 𝐡𝐚 𝐮𝐧𝐚 *${size}*
-━━━━━━━━━━━━━━━━\n> 𝟥𝟥𝟥 𝔹𝕆𝕋`.trim()
+━━━━━━━━━━━━━━━━\n> 𝟴𝟴𝟴 𝗕𝗢𝗧`.trim()
 
 
     m.reply(boobs, null, { mentions: conn.parseMention(boobs) })
