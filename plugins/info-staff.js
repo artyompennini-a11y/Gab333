@@ -1,53 +1,44 @@
-//Codice di info-staff.js
-
-//Plugin by Gab, Lucifero & 333 staff
-
-
-
-
-
-
 let handler = async (m, { conn }) => {
 
-const text = 
-`╭─────────╮\n┃ 𝐈𝐍𝐅𝐎 𝐒𝐓𝐀𝐅𝐅 𝟴𝟴𝟴 𝗕𝗢𝗧
-┃
-┃ 👑 𝐎𝐖𝐍𝐄𝐑
-┃ • The Punisher: wa.me/393206032199
-┃
-┃ 🔱 𝐂𝐎-𝐎𝐖𝐍𝐄𝐑
-┃ • Elixir: wa.me/393784409415
-┃━━━━━━━━━━━━━━
-┃ 🌐 𝐋𝐈𝐍𝐊 𝐈𝐍𝐒𝐓𝐀𝐆𝐑𝐀𝐌
-┃ • The Punisher: https://www.instagram.com/arty.340?igsh=ZGxranlrczNybHJ0
-┃ • Elixir: https://instagram.com/eli.xir_ggt.me/ElixirKG
-┃━━━━━━━━━━━━━━
-┃ 📲 𝐈 𝐍𝐎𝐒𝐓𝐑𝐈 𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌
-┃ • The Punisher: *@punishth*
-┃ • Elixir: *@ElixirKG*
-╰─────────╯
-`
+  const text = `╭━━━〔 👑 *INFO STAFF* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Staff Ufficiale
+┃━━━━━━━━━━━━━━━━━━
+┃ 👑 *OWNER:*
+┃  • _The Punisher:_ wa.me/393206032199
+┃ 
+┃ 🔱 *CO-OWNER:*
+┃  • _Elixir:_ wa.me/393784409415
+┃━━━━━━━━━━━━━━━━━━
+┃ 🌐 *LINK INSTAGRAM:*
+┃  • _The Punisher:_ instagram.com/arty.340
+┃  • _Elixir:_ instagram.com/eli.xir_ggt.me/ElixirKG
+┃ 
+┃ 📲 *CONTATTI TELEGRAM:*
+┃  • _The Punisher:_ @punishth
+┃  • _Elixir:_ @ElixirKG
+╰━━━━━━━━━━━━━━━━━━┈`.trim()
 
-const mentions = [
-'393206032199@s.whatsapp.net',
-'393784409415@s.whatsapp.net'
-]
+  const mentions = [
+    '393206032199@s.whatsapp.net',
+    '393784409415@s.whatsapp.net'
+  ]
 
-await conn.sendMessage(m.chat, {
-text,
-mentions,
-contextInfo: {
-externalAdReply: {
-title: '𝐒𝐓𝐀𝐅𝐅 𝟴𝟴𝟴 𝗕𝗢𝗧',
-body: '𝐞𝐧𝐭𝐫𝐚 𝐧𝐞𝐥 𝐜𝐚𝐧𝐚𝐥𝐞 𝐝𝐢 𝟴𝟴𝟴 𝗕𝗢𝗧!',
-sourceUrl: 'https://whatsapp.com/channel/0029Vb7NyC67tkj0robcbw24',
-mediaType: 1,
-renderLargerThumbnail: true
-}
-}
-}, { quoted: m })
+  await conn.sendMessage(m.chat, {
+    text,
+    mentions,
+    contextInfo: {
+      externalAdReply: {
+        title: 'STAFF 𝟴𝟴𝟴 𝗕𝗢𝗧',
+        body: 'Entra nel canale ufficiale di 𝟴𝟴𝟴 𝗕𝗢𝗧!',
+        sourceUrl: 'https://whatsapp.com/channel/0029Vb7NyC67tkj0robcbw24',
+        mediaType: 1,
+        renderLargerThumbnail: true
+      }
+    }
+  }, { quoted: m })
 
-m.react('👑')
+  m.react('👑')
 }
 
 handler.help = ['staff']
