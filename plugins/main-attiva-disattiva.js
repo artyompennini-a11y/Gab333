@@ -1,5 +1,3 @@
-//Plugin by Gab, Lucifero & 333 staff
-
 import fetch from 'node-fetch';
 import fs from 'fs';
 
@@ -16,7 +14,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     },
     message: {
       locationMessage: {
-        name: '⚙️ 𝐒𝐢𝐬𝐭𝐞𝐦𝐚 𝐅𝐮𝐧𝐳𝐢𝐨𝐧𝐢',
+        name: '🤖 888 BOT • Sginal Control',
         jpegThumbnail: imgBuffer.toString('base64'),
         vcard: 'BEGIN:VCARD\nVERSION:3.0\nN:;333;;;\nFN:333\nEND:VCARD'
       }
@@ -50,7 +48,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     { key: 'antitoxic', name: 'Antitossici', desc: 'Avverte e rimuove per parolacce/insulti' },
     { key: 'antiBot', name: 'Antibot', desc: 'Rimuove eventuali bot indesiderati' },
     { key: 'antioneview', name: 'Antiviewonce', desc: 'Antiviewonce' },
-    { key: 'rileva', name: 'Rileva', desc: 'Rileva eventi gruppo' },
+    { key: 'rileva', name: 'Rileva', desc: 'Rileva events gruppo' },
     { key: 'antiporn', name: 'Antiporno', desc: 'Antiporno' },
     { key: 'antigore', name: 'Antigore', desc: 'Antigore' },
     { key: 'antinuke', name: 'AntiNuke', desc: 'Blocca cambi di admin non autorizzati' },
@@ -81,20 +79,20 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     const adminCheck = m.isGroup && !(isAdmin || isOwner || isROwner);
     const ownerOnly = !isOwner && !isROwner;
 
-    const adminGuard = () => { result.status = '𝐂𝐨𝐦𝐚𝐧𝐝𝐨 𝐝𝐢𝐬𝐩𝐨𝐧𝐢𝐛𝐢𝐥𝐞 𝐬𝐨𝐥𝐨 𝐩𝐞𝐫 𝐚𝐝𝐦𝐢𝐧'; };
-    const ownerGuard = () => { result.status = '𝐒𝐨𝐥𝐨 𝐩𝐞𝐫 𝐨𝐰𝐧𝐞𝐫!'; };
-    const groupGuard = () => { result.status = '𝐂𝐨𝐦𝐚𝐧𝐝𝐨 𝐮𝐭𝐢𝐥𝐢𝐳𝐳𝐚𝐛𝐢𝐥𝐞 𝐬𝐨𝐥𝐨 𝐧𝐞𝐢 𝐠𝐫𝐮𝐩𝐩𝐢'; };
+    const adminGuard = () => { result.status = 'Azione consentita solo agli amministratori.'; };
+    const ownerGuard = () => { result.status = 'Azione riservata esclusivamente al proprietario.'; };
+    const groupGuard = () => { result.status = 'Questo comando può essere usato solo nei gruppi.'; };
 
     const setChat = (key) => {
-      if (chat[key] === isEnable) { result.status = isEnable ? '𝐞̀ 𝐠𝐢𝐚̀ 𝐚𝐭𝐭𝐢𝐯𝐨.' : '𝐞̀ 𝐠𝐢𝐚̀ 𝐝𝐢𝐬𝐚𝐭𝐭𝐢𝐯𝐚𝐭𝐨.'; return; }
+      if (chat[key] === isEnable) { result.status = isEnable ? 'risulta già attivo.' : 'risulta già disattivato.'; return; }
       chat[key] = isEnable;
-      result.status = isEnable ? '𝐀𝐭𝐭𝐢𝐯𝐚𝐭𝐨' : '𝐃𝐢𝐬𝐚𝐭𝐭𝐢𝐯𝐚𝐭𝐨';
+      result.status = isEnable ? 'ATTIVATO' : 'DISATTIVATO';
       result.success = true;
     };
     const setBot = (key) => {
-      if (bot[key] === isEnable) { result.status = isEnable ? '𝐞̀ 𝐠𝐢𝐚̀ 𝐚𝐭𝐭𝐢𝐯𝐨.' : '𝐞̀ 𝐠𝐢𝐚̀ 𝐝𝐢𝐬𝐚𝐭𝐭𝐢𝐯𝐚𝐭𝐨.'; return; }
+      if (bot[key] === isEnable) { result.status = isEnable ? 'risulta già attivo.' : 'risulta già disattivato.'; return; }
       bot[key] = isEnable;
-      result.status = isEnable ? '𝐀𝐭𝐭𝐢𝐯𝐚𝐭𝐨' : '𝐃𝐢𝐬𝐚𝐭𝐭𝐢𝐯𝐚𝐭𝐨';
+      result.status = isEnable ? 'ATTIVATO' : 'DISATTIVATO';
       result.success = true;
     };
 
@@ -199,20 +197,20 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         if (adminCheck) { adminGuard(); break; }
         setChat('antiLink'); break;
       default:
-        result.status = '𝐂𝐨𝐦𝐚𝐧𝐝𝐨 𝐧𝐨𝐧 𝐫𝐢𝐜𝐨𝐧𝐨𝐬𝐜𝐢𝐮𝐭𝐨, 𝐩𝐞𝐫 𝐯𝐞𝐝𝐞𝐫𝐞 𝐥𝐚 𝐥𝐢𝐬𝐭𝐚 𝐝𝐞𝐢 𝐜𝐨𝐦𝐚𝐧𝐝𝐢 𝐟𝐚𝐫𝐞 \'\'.𝐟𝐮𝐧𝐳𝐢𝐨𝐧𝐢\'\''; break;
+        result.status = `Modulo non riconosciuto. Scrivi *${usedPrefix}funzioni* per la lista completa.`; break;
     }
     return result;
   };
 
   const buildMessage = (result) => {
-    let icon = result.success ? (isEnable ? '🟢' : '🔴') : result.status.includes('𝐠𝐢𝐚̀') ? '🟡' : '⚠️';
-    let displayStatus = result.success ? (isEnable ? '𝐀𝐓𝐓𝐈𝐕𝐀𝐓𝐀' : '𝐃𝐈𝐒𝐀𝐓𝐓𝐈𝐕𝐀𝐓𝐀') : result.status;
-    return `╔═══「 𝐂𝐎𝐍𝐅𝐄𝐑𝐌𝐀 」═══✧\n║ 📌 *Funzione:* ${result.type}\n║ ${icon} *Stato:* ${displayStatus}\n║ 👤 *Admin:* ${userName}\n╚════════════════✧\n\n`;
+    let icon = result.success ? (isEnable ? '🟩' : '🟥') : result.status.includes('già') ? '🟨' : '⚠️';
+    let displayStatus = result.success ? `*${result.status}*` : result.status;
+    return `╭━━━〔 *888 CONTROL* 〕━━━┈\n┃ ⚙️ *Funzione:* ${result.type}\n┃ ${icon} *Stato:* ${displayStatus}\n┃ 👤 *Operatore:* ${userName}\n╰━━━━━━━━━━━━━━━━━━━━┈\n\n`;
   };
 
   const createSections = (features) => [
-    { title: 'Attiva', rows: features.map(f => ({ title: f.name, description: f.desc, id: `${usedPrefix}attiva ${f.key}` })) },
-    { title: 'Disattiva', rows: features.map(f => ({ title: f.name, description: f.desc, id: `${usedPrefix}disattiva ${f.key}` })) }
+    { title: '🟢 Attiva Modulo', rows: features.map(f => ({ title: f.name, description: f.desc, id: `${usedPrefix}attiva ${f.key}` })) },
+    { title: '🔴 Disattiva Modulo', rows: features.map(f => ({ title: f.name, description: f.desc, id: `${usedPrefix}disattiva ${f.key}` })) }
   ];
 
   if (!args.length) {
@@ -220,25 +218,25 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     let cards = [
       {
         image: { url: bot333 },
-        title: 'Impostazioni Admin',
-        body: 'Gestisci le funzioni del gruppo selezionando attiva o disattiva.',
-        footer: '𝟴𝟴𝟴 𝗕𝗢𝗧',
-        buttons: [{ name: 'single_select', buttonParamsJson: JSON.stringify({ title: 'Impostazioni gruppo', sections: createSections(adminFeatures) }) }]
+        title: '⚙️ Pannello Gestione Gruppo',
+        body: 'Seleziona dal menù a tendina sottostante i moduli di sicurezza e utilità da attivare o disattivare nel gruppo.',
+        footer: '𝟴𝟴𝟴 𝗕𝗢𝗧 • Security Panel',
+        buttons: [{ name: 'single_select', buttonParamsJson: JSON.stringify({ title: 'Apri Impostazioni', sections: createSections(adminFeatures) }) }]
       }
     ];
 
     if (isOwner || isROwner) {
       cards.push({
         image: { url: bot333 },
-        title: 'Impostazioni Owner',
-        body: 'Gestisci le funzioni proprietario selezionando attiva o disattiva.',
-        footer: '𝟴𝟴𝟴 𝗕𝗢𝗧',
-        buttons: [{ name: 'single_select', buttonParamsJson: JSON.stringify({ title: 'Seleziona azione', sections: createSections(ownerFeatures) }) }]
+        title: '👑 Pannello Configurazione Owner',
+        body: 'Configura i settaggi core del bot e le funzioni globali di protezione del sistema.',
+        footer: '𝟴𝟴𝟴 𝗕𝗢𝗧 • Owner Panel',
+        buttons: [{ name: 'single_select', buttonParamsJson: JSON.stringify({ title: 'Apri Comandi Core', sections: createSections(ownerFeatures) }) }]
       });
     }
 
     return conn.sendMessage(m.chat, {
-      text: '*Sistema di gestione funzioni*',
+      text: '🤖 *SISTEMA GESTIONE FUNZIONI* 🤖\n\n_Usa i menù nelle schede sottostanti per configurare il bot._',
       footer: '𝟴𝟴𝟴 𝗕𝗢𝗧',
       cards
     }, { quoted: fake });
@@ -247,7 +245,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   const firstArg = args[0].toLowerCase();
   if (catalogs[firstArg]) {
     if (m.isGroup && !(isAdmin || isOwner || isROwner)) {
-      return conn.sendMessage(m.chat, { text: '𝐂𝐨𝐦𝐚𝐧𝐝𝐨 𝐝𝐢𝐬𝐩𝐨𝐧𝐢𝐛𝐢𝐥𝐞 𝐬𝐨𝐥𝐨 𝐩𝐞𝐫 𝐚𝐝𝐦𝐢𝐧' }, { quoted: fake });
+      return conn.sendMessage(m.chat, { text: '⚠️ *Azione negata:* Questo catalogo è accessibile solo dagli amministratori.' }, { quoted: fake });
     }
     const results = catalogs[firstArg].map(key => toggleFeature(key));
     const msg = results.map(buildMessage).join('').trim();
