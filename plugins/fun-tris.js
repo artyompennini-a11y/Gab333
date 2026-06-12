@@ -552,7 +552,7 @@ handler.before = async (m, { conn }) => {
                         ` │ 🎖️ ${winnerStats.wins}/${winnerStats.games} 𝐯𝐢𝐭𝐭𝐨𝐫𝐢𝐞 (${Math.round((winnerStats.wins/winnerStats.games)*100)}%)\n` +
                         ` │ 🥉 𝐒𝐜𝐨𝐧𝐟𝐢𝐭𝐭𝐨: *${await getSafeName(conn, loser)}*\n` +
                         ` │ 🎖️ ${loserStats.wins}/${loserStats.games} 𝐯𝐢𝐭𝐭𝐨𝐫𝐢𝐞 (${Math.round((loserStats.wins/loserStats.games)*100)}%)\n╰─────────╯\n` +
-                        `𝐮𝐬𝐚 𝐢𝐥 𝐜𝐨𝐦𝐚𝐧𝐝𝐨 ’’.𝐭𝐫𝐢𝐬’’ 𝐩𝐞𝐫 𝐜𝐨𝐦𝐢𝐧𝐜𝐢𝐚𝐫𝐞 𝐮𝐧𝐚 𝐧𝐮𝐨𝐯𝐚 𝐩𝐚𝐫𝐭𝐢𝐭𝐚\n> 𝟥𝟥𝟥 𝔹𝕆𝕋`,
+                        `𝐮𝐬𝐚 𝐢𝐥 𝐜𝐨𝐦𝐚𝐧𝐝𝐨 ’’.𝐭𝐫𝐢𝐬’’ 𝐩𝐞𝐫 𝐜𝐨𝐦𝐢𝐧𝐜𝐢𝐚𝐫𝐞 𝐮𝐧𝐚 𝐧𝐮𝐨𝐯𝐚 𝐩𝐚𝐫𝐭𝐢𝐭𝐚\n> 𝟴𝟴𝟴 𝗕𝗢𝗧`,
                     mentions: [winner, loser]
                 });
             }, 2000);
