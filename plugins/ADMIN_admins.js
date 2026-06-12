@@ -1,10 +1,3 @@
-//Plugin by Gab, Lucifero & 333 staff
-
-
-
-
-
-
 const handler = async (m, { conn, participants, groupMetadata, args }) => {
     const groupAdmins = participants.filter(p => p.admin);
     const mentionList = groupAdmins.map(p => p.id);
@@ -13,25 +6,25 @@ const handler = async (m, { conn, participants, groupMetadata, args }) => {
         `${m.chat.split('-')[0]}@s.whatsapp.net`;
 
     let pesan = args.join(' ');
-    let message = pesan ? pesan : '❌ Nessun messaggio fornito';
+    let message = pesan ? pesan : 'Nessun messaggio fornito';
 
     const listAdmin = groupAdmins
-        .map((v, i) => `✧👑 ${i + 1}. @${v.id.split('@')[0]}`)
+        .map((v, i) => `┃  • @${v.id.split('@')[0]}`)
         .join('\n');
 
-    let text = `
-╭─────────╮
-│ ⚠️ 𝐒𝐕𝐄𝐆𝐋𝐈𝐀 𝐀𝐃𝐌𝐈𝐍! 
-━━━━━━━━━━━━━━
-✎ 𝐌𝐄𝐒𝐒𝐀𝐆𝐆𝐈𝐎:
-➥ ${message}
-
-♔ *𝐋𝐈𝐒𝐓𝐀 𝐀𝐃𝐌𝐈𝐍:*\n${listAdmin}
-
-━━━━━━━━━━━━━━
-> 𝟴𝟴𝟴 𝗕𝗢𝗧
-╰─────────╯
-`.trim();
+    let text = `╭━━━〔 ⚠️ *RICHIAMO ADMIN* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Segnalazione Staff
+┃━━━━━━━━━━━━━━━━━━
+┃ 📝 *MESSAGGIO:*
+┃ ⮕ _${message}_
+┃ 
+┃ 👑 *LISTA AMMINISTRATORI:*
+${listAdmin}
+┃━━━━━━━━━━━━━━━━━━
+┃ _Tutti gli amministratori sono stati_
+┃ _menzionati e sollecitati a rispondere._
+╰━━━━━━━━━━━━━━━━━━┈`.trim();
 
     await conn.sendMessage(m.chat, {
         text: text,
@@ -39,7 +32,7 @@ const handler = async (m, { conn, participants, groupMetadata, args }) => {
             mentionedJid: [...mentionList, owner],
             externalAdReply: {
                 title: groupMetadata.subject,
-                body: "🛎️ sveglio gli admin del gruppo",
+                body: "🛎️ Sveglia in corso per lo staff del gruppo",
                 thumbnailUrl: await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://telegra.ph/file/0f336691459a936a75f1b.jpg',
                 mediaType: 1,
                 renderLargerThumbnail: false
