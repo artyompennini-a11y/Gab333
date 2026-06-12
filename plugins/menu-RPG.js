@@ -26,46 +26,56 @@ let handler = async (_0x512ed3, { conn: _0x542b94, usedPrefix: _0x3f73c1 }) => {
     },
     'message': {
       'locationMessage': {
-        'name': "𝐌𝚵𝐍𝐔 𝐑𝐏𝐆 🎰",
+        'name': "🎰 MENU RPG 888",
         'jpegThumbnail': await (await fetch("https://qu.ax/JKCXP.jpg")).buffer()
       }
     },
     'participant': "0@s.whatsapp.net"
   };
 
- let _0x2aa101 = 
-`╭─────────╮ 
-┃ 🎰 𝐌𝐄𝐍𝐔 𝐑𝐏𝐆 𝐃𝐈\n┃ 𝟴𝟴𝟴 𝗕𝗢𝗧
-┃━━━━━━━━━━━━━━ 
-┃⮕ ${_0x3f73c1}𝐬𝐨𝐫𝐭𝐞 𝐭𝐞𝐬𝐭𝐚/𝐜𝐫𝐨𝐜𝐞
-┃⮕ ${_0x3f73c1}𝐬𝐥𝐨𝐭
-┃⮕ ${_0x3f73c1}𝐩𝐨𝐫𝐭𝐚𝐟𝐨𝐠𝐥𝐢𝐨
-┃⮕ ${_0x3f73c1}𝐩𝐚𝐠𝐡𝐞𝐭𝐭𝐚
-┃⮕ ${_0x3f73c1}𝐝𝐞𝐩𝐨𝐬𝐢𝐭𝐚
-┃⮕ ${_0x3f73c1}𝐩𝐫𝐞𝐥𝐞𝐯𝐚
-┃⮕ ${_0x3f73c1}𝐫𝐨𝐮𝐥𝐞𝐭𝐭𝐞
-┃⮕ ${_0x3f73c1}𝐫𝐮𝐛𝐚
-┃⮕ ${_0x3f73c1}𝐛𝐨𝐧𝐢𝐟𝐢𝐜𝐨
-┃⮕ ${_0x3f73c1}𝐢𝐛𝐚𝐧
-┃⮕ ${_0x3f73c1}𝐜𝐚𝐥𝐜𝐢𝐨𝐬𝐜𝐨𝐦𝐦𝐞𝐬𝐬𝐞
-┃⮕ ${_0x3f73c1}𝐫𝐮𝐨𝐭𝐚
-┃⮕ ${_0x3f73c1}𝐩𝐫𝐞𝐦𝐢𝐨𝐭𝐨𝐩
-┃⮕ ${_0x3f73c1}𝐪𝐮𝐢𝐳
-┃⮕ ${_0x3f73c1}𝐜𝐨𝐦𝐩𝐫𝐚 / 𝐯𝐞𝐧𝐝𝐢
-┃⮕ ${_0x3f73c1}𝐥𝐚𝐯𝐨𝐫𝐚
-┃⮕ ${_0x3f73c1}𝐩𝐫𝐨𝐬𝐭𝐢𝐭𝐮𝐭𝐚
-┃⮕ ${_0x3f73c1}𝐜𝐨𝐥𝐩𝐨
-┃⮕ ${_0x3f73c1}𝐦𝐚𝐠𝐚𝐳𝐳𝐢𝐧𝐨
-┃⮕ ${_0x3f73c1}𝐫𝐚𝐧𝐤
-┃⮕ ${_0x3f73c1}𝐫𝐚𝐩𝐢𝐧𝐚
-┃⮕ ${_0x3f73c1}𝐬𝐩𝐚𝐫𝐚
-┃⮕ ${_0x3f73c1}𝐝𝐮𝐞𝐥𝐥𝐨
-┃⮕ ${_0x3f73c1}𝐜𝐚𝐬𝐢𝐧𝐨
-━━━━━━━━━━━━━━
-> 𝐩𝐞𝐫 𝐪𝐮𝐚𝐥𝐬𝐢𝐚𝐬𝐢 𝐩𝐫𝐨𝐛𝐥𝐞𝐦𝐚\n> 𝐮𝐬𝐚𝐫𝐞 𝐢𝐥 𝐭𝐚𝐬𝐭𝐨 ’’.𝐭𝐢𝐜𝐤𝐞𝐭’’\n> 𝐩𝐞𝐫 𝐬𝐞𝐠𝐧𝐚𝐥𝐚𝐫𝐥𝐨 𝐚𝐥𝐥𝐨 𝐬𝐭𝐚𝐟𝐟.
-╰─────────╯
-
-  `.trim();
+  let _0x2aa101 = 
+`╭━━━〔 🎰 *MENU RPG* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Categoria:* Minigiochi & Economia
+┃━━━━━━━━━━━━━━━━━━
+┃ 🪙 *Giochi e Fortuna:*
+┃  ⮕ ${_0x3f73c1}sorte
+┃  ⮕ ${_0x3f73c1}slot
+┃  ⮕ ${_0x3f73c1}roulette
+┃  ⮕ ${_0x3f73c1}ruota
+┃  ⮕ ${_0x3f73c1}casino
+┃ 
+┃ 💰 *Economia & Banca:*
+┃  ⮕ ${_0x3f73c1}portafoglio
+┃  ⮕ ${_0x3f73c1}paghetta
+┃  ⮕ ${_0x3f73c1}deposita
+┃  ⮕ ${_0x3f73c1}preleva
+┃  ⮕ ${_0x3f73c1}bonifico
+┃  ⮕ ${_0x3f73c1}iban
+┃ 
+┃ ⚔️ *Azioni & Crimini:*
+┃  ⮕ ${_0x3f73c1}ruba
+┃  ⮕ ${_0x3f73c1}rapina
+┃  ⮕ ${_0x3f73c1}spara
+┃  ⮕ ${_0x3f73c1}duello
+┃  ⮕ ${_0x3f73c1}colpo
+┃ 
+┃ 💼 *Lavoro & Commercio:*
+┃  ⮕ ${_0x3f73c1}lavora
+┃  ⮕ ${_0x3f73c1}prostituta
+┃  ⮕ ${_0x3f73c1}compra
+┃  ⮕ ${_0x3f73c1}vendi
+┃  ⮕ ${_0x3f73c1}magazzino
+┃ 
+┃ 🏆 *Classifiche & Quiz:*
+┃  ⮕ ${_0x3f73c1}calcioscommesse
+┃  ⮕ ${_0x3f73c1}premiotop
+┃  ⮕ ${_0x3f73c1}quiz
+┃  ⮕ ${_0x3f73c1}rank
+╰━━━━━━━━━━━━━━━━━━┈
+> ⚠️ In caso di bug o problemi tecnici, 
+> utilizza il comando *${_0x3f73c1}ticket* per 
+> segnalarlo subito allo staff.`.trim();
 
   _0x542b94.sendMessage(_0x512ed3.chat, { text: _0x2aa101 }, { quoted: _0x6bd16e });
 };
