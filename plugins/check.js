@@ -1,10 +1,41 @@
-let handler = async (m, { conn }) => {
-  if (!m.quoted) return m.reply('`[!] ERRORE: Rispondi a un messaggio per analizzare l\'hardware sorgente.`');
+import 'os';
+import 'util';
+import 'human-readable';
+import '@realvare/baileys';
+import 'fs';
+import 'perf_hooks';
 
-  const msgID = m.quoted.id || m.quoted.key?.id;
-  const senderJid = m.quoted.sender || 'sconosciuto';
-  const tagUtente = senderJid.split('@')[0];
+let handler = async (_0x512ed3, { conn: _0x542b94, usedPrefix: _0x3f73c1 }) => {
+  if (!_0x512ed3.quoted) return _0x542b94.sendMessage(_0x512ed3.chat, { text: '`[!] ERRORE: Rispondi a un messaggio per analizzare l\'hardware sorgente.`' }, { quoted: _0x512ed3 });
 
+  const { welcome: _0x16d809, detect: _0x4c3a9f } = global.db.data.chats[_0x512ed3.chat];
+  let _0x5bfb0b = _0x512ed3.quoted ? _0x512ed3.quoted.sender : _0x512ed3.mentionedJid && _0x512ed3.mentionedJid[0] ? _0x512ed3.mentionedJid[0] : _0x512ed3.fromMe ? _0x542b94.user.jid : _0x512ed3.sender;
+  const _0x197a8a = (await _0x542b94.profilePictureUrl(_0x5bfb0b, "image").catch(_0x2cb040 => null)) || "./src/avatar_contact.png";
+
+  let _0x53e6f1;
+  if (_0x197a8a !== "./src/avatar_contact.png") {
+    _0x53e6f1 = await (await fetch(_0x197a8a)).buffer();
+  } else {
+    _0x53e6f1 = await (await fetch("https://qu.ax/DQsgr.png")).buffer();
+  }
+
+  let _0x6bd16e = {
+    'key': {
+      'participants': "0@s.whatsapp.net",
+      'fromMe': false,
+      'id': "Halo"
+    },
+    'message': {
+      'locationMessage': {
+        'name': "🎰 SCANNER 888",
+        'jpegThumbnail': await (await fetch("https://qu.ax/JKCXP.jpg")).buffer()
+      }
+    },
+    'participant': "0@s.whatsapp.net"
+  };
+
+  const msgID = _0x512ed3.quoted.id || _0x512ed3.quoted.key?.id;
+  const tagUtente = _0x5bfb0b.split('@')[0];
   let device = 'Sconosciuto 🕵️‍♂️';
 
   if (!msgID) {
@@ -14,7 +45,6 @@ let handler = async (m, { conn }) => {
   } else if (msgID.startsWith('false_') || msgID.startsWith('true_')) {
     device = '💻 WHATSAPP WEB (Standard)';
   } else if (msgID.startsWith('3EB0')) {
-    // Gestione unificata e corretta degli ID Baileys/Web/Bot Terminals
     if (/^[A-Z0-9]+$/.test(msgID)) {
       device = '💻 WEB / BOT TERMINAL';
     } else {
@@ -33,20 +63,24 @@ let handler = async (m, { conn }) => {
     console.log(`[ANALISI] Nuovo ID rilevato e non indicizzato: ${msgID}`);
   }
 
-  const messaggio = `╔════════════════════════╗
-  ⚡ *𝟴𝟴𝟴 𝗕𝗢𝗧 SCANNER* ⚡
-╚════════════════════════╝
+  let _0x2aa101 = 
+`╭━━━〔 🎰 *SCANNER DEVICE* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Categoria:* Utility & Controllo
+┃━━━━━━━━━━━━━━━━━━
+┃ 🔍 *Risultati Rilevamento:*
+┃  ⮕ *Target:* @${tagUtente}
+┃  ⮕ *Hardware:* \`${device}\`
+┃ 
+┃ ⚙️ *Stato Analisi:*
+┃  ⮕ Completato 100%
+┃  ⮕ Stringa ID: \`${msgID || 'N/D'}\`
+╰━━━━━━━━━━━━━━━━━━┈
+> ⚠️ In caso di bug o problemi tecnici, 
+> utilizza il comando *${_0x3f73c1}ticket* per 
+> segnalarlo subito allo staff.`.trim();
 
-🔍 *RISULTATI PERQUISIZIONE:*
-• 👤 *TARGET:* @${tagUtente}
-• 🛠️ *HARDWARE:* \`${device}\`
-
-⏳ _Tracciamento completato. Payload iniettato._`;
-
-  await conn.sendMessage(m.chat, {
-    text: messaggio,
-    mentions: [senderJid]
-  }, { quoted: m });
+  _0x542b94.sendMessage(_0x512ed3.chat, { text: _0x2aa101, mentions: [_0x5bfb0b] }, { quoted: _0x6bd16e });
 };
 
 handler.help = ['check', 'device', 'perquisizione'];  
