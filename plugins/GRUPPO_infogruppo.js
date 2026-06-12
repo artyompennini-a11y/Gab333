@@ -1,8 +1,5 @@
-
-
-
 const handler = async (m, { conn }) => {
-  if (!m.isGroup) return m.reply('❌ Questo comando funziona solo nei gruppi.');
+  if (!m.isGroup) return m.reply('❌ _Questo comando funziona solo all\'interno dei gruppi._');
 
   function progress(percent) {
     let bar = ''
@@ -15,32 +12,38 @@ const handler = async (m, { conn }) => {
   }
 
   const msg = await conn.sendMessage(m.chat,{
-    text:`╭──〔𝟴𝟴𝟴 𝗕𝗢𝗧 𝐀𝐕𝐕𝐈𝐀𝐓𝐎〕──╮
-
-⌛ 𝐀𝐯𝐯𝐢𝐨 𝐬𝐜𝐚𝐧𝐬𝐢𝐨𝐧𝐞 𝐠𝐫𝐮𝐩𝐩𝐨...
-
-${progress(5)}`
+    text:`╭━━━〔 ⏳ *SISTEMA SCANSIONE* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Avvio Diagnostica...
+┃━━━━━━━━━━━━━━━━━━
+┃ ⮕ _Inizializzazione del processo..._
+┃ 
+┃ ${progress(5)}
+╰━━━━━━━━━━━━━━━━━━┈`
   },{quoted:m})
 
-  async function update(percent,text){
+  async function update(percent, text){
     await conn.sendMessage(m.chat,{
-      text:`╭──〔𝟴𝟴𝟴 𝗕𝗢𝗧 𝐀𝐕𝐕𝐈𝐀𝐓𝐎〕──╮
-
-⌛ ${text}
-
-${progress(percent)}`,
+      text:`╭━━━〔 ⏳ *SISTEMA SCANSIONE* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* ${text}
+┃━━━━━━━━━━━━━━━━━━
+┃ ⮕ _Analisi dei metadati in corso..._
+┃ 
+┃ ${progress(percent)}
+╰━━━━━━━━━━━━━━━━━━┈`,
       edit:msg.key
     })
   }
 
   await new Promise(r=>setTimeout(r,700))
-  await update(30,"𝐑𝐚𝐜𝐜𝐨𝐥𝐭𝐚 𝐢𝐧𝐟𝐨𝐫𝐦𝐚𝐳𝐢𝐨𝐧𝐢")
+  await update(30,"Raccolta Informazioni")
   await new Promise(r=>setTimeout(r,700))
-  await update(60,"𝐀𝐧𝐚𝐥𝐢𝐬𝐢 𝐦𝐞𝐦𝐛𝐫𝐢")
+  await update(60,"Analisi Membri")
   await new Promise(r=>setTimeout(r,700))
-  await update(85,"𝐕𝐞𝐫𝐢𝐟𝐢𝐜𝐚 𝐩𝐞𝐫𝐦𝐞𝐬𝐬𝐢")
+  await update(85,"Verifica Permessi")
   await new Promise(r=>setTimeout(r,700))
-  await update(100,"𝐂𝐨𝐦𝐩𝐥𝐞𝐭𝐚𝐭𝐨 𝐜𝐨𝐧 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐨!")
+  await update(100,"Completato con Successo!")
 
   const metadata = await conn.groupMetadata(m.chat)
   const nome = metadata.subject
@@ -53,8 +56,8 @@ ${progress(percent)}`,
   const percentualeAdmin = Math.floor((admins/membri)*100)
   const creatoIl = new Date(metadata.creation*1000).toLocaleDateString('it-IT')
   const giorniVita = Math.floor((Date.now() - metadata.creation*1000)/86400000)
-  const annunci = metadata.announce ? "𝐒𝐨𝐥𝐨 𝐚𝐝𝐦𝐢𝐧 𝐩𝐨𝐬𝐬𝐨𝐧𝐨 𝐬𝐜𝐫𝐢𝐯𝐞𝐫𝐞" : "𝐂𝐡𝐚𝐭 𝐚𝐩𝐞𝐫𝐭𝐚 𝐚 𝐭𝐮𝐭𝐭𝐢"
-  const restrizioni = metadata.restrict ? "𝐒𝐨𝐥𝐨 𝐚𝐝𝐦𝐢𝐧 𝐩𝐨𝐬𝐬𝐨𝐧𝐨\n┃ 𝐦𝐨𝐝𝐢𝐟𝐢𝐜𝐚𝐫𝐞 𝐢𝐧𝐟𝐨" : "𝐓𝐮𝐭𝐭𝐢 𝐩𝐨𝐬𝐬𝐨𝐧𝐨\n┃ 𝐦𝐨𝐝𝐢𝐟𝐢𝐜𝐚𝐫𝐞 𝐢𝐧𝐟𝐨"
+  const annunci = metadata.announce ? "Solo admin possono scrivere" : "Chat aperta a tutti"
+  const restrizioni = metadata.restrict ? "Solo admin possono modificare info" : "Tutti possono modificare info"
 
   const chatData = global.db.data.chats[m.chat] || {}
   let messaggiTotali = chatData.totalmsg || 0
@@ -83,45 +86,45 @@ ${progress(percent)}`,
   let mentions=[]
   for (let admin of adminsList){
     const numero = admin.id.split('@')[0]
-    listaAdmin += `┃ @${numero}\n`
+    listaAdmin += `┃  • @${numero}\n`
     mentions.push(admin.id)
   }
   if (creatoreJid) mentions.push(creatoreJid)
 
   await conn.sendMessage(m.chat,{delete:msg.key})
 
-  const messaggio=`
-╔══『 👥 𝐈𝐍𝐅𝐎 𝐆𝐑𝐔𝐏𝐏𝐎 』══╗
-┃
-┃ 📛 𝐍𝐨𝐦𝐞 𝐠𝐫𝐮𝐩𝐩𝐨: *${nome}*
-┃
-┃ 🛡️ 𝐂𝐫𝐞𝐚𝐭𝐨 𝐝𝐚: ${creatore}
-┃ 📆 𝐈𝐥 𝐠𝐢𝐨𝐫𝐧𝐨: *${creatoIl}*
-┃ ⏳ 𝐀𝐭𝐭𝐢𝐯𝐨 𝐝𝐚: *${giorniVita}* 𝐆𝐢𝐨𝐫𝐧𝐢
-┃
-┃ 👥 𝐌𝐞𝐦𝐛𝐫𝐢 𝐭𝐨𝐭𝐚𝐥𝐢: *${membri}*
-┃ 🔧 𝐀𝐝𝐦𝐢𝐧 𝐭𝐨𝐭𝐚𝐥𝐢: *${admins}* 
-┃
-┃ 💬 𝐌𝐞𝐬𝐬𝐚𝐠𝐠𝐢 𝐭𝐨𝐭𝐚𝐥𝐢: *${messaggiTotali}*
-┃ (vengono contati\n┃ dal momento in\n┃ cui il bot entra\n┃ nel gruppo)
-┃
-┃ 🔒 𝐀𝐧𝐧𝐮𝐧𝐜𝐢: ${annunci}
-┃ ⚙️ 𝐑𝐞𝐬𝐭𝐫𝐢𝐳𝐢𝐨𝐧𝐢: ${restrizioni}
-┃
-┃ 👑 𝐀𝐝𝐦𝐢𝐧 𝐝𝐞𝐥 𝐠𝐫𝐮𝐩𝐩𝐨:
-${listaAdmin}┃
-╚═══════════╝
-`
+  const messaggio=`╭━━━〔 👥 *INFO GRUPPO* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Informazioni Sincronizzate
+┃━━━━━━━━━━━━━━━━━━
+┃ 📛 *Nome Gruppo:* ${nome}
+┃ 🛡️ *Creato da:* ${creatore}
+┃ 📆 *Data Creazione:* ${creatoIl}
+┃ ⏳ *Attivo da:* ${giorniVita} Giorni
+┃ 
+┃ 📊 *STATISTICHE CHAT:*
+┃  • _Membri totali:_ ${membri}
+┃  • _Admin totali:_ ${admins} (${percentualeAdmin}%)
+┃  • _Messaggi totali:_ ${messaggiTotali}*
+┃    (*conteggiati dall'ingresso del bot)
+┃ 
+┃ 🔒 *IMPOSTAZIONI:*
+┃  • _Invio Messaggi:_ ${annunci}
+┃  • _Modifica Info:_ ${restrizioni}
+┃ 
+┃ 👑 *AMMINISTRATORI IN CARICA:*
+${listaAdmin.trimEnd()}
+╰━━━━━━━━━━━━━━━━━━┈`.trim()
 
   await conn.sendMessage(
     m.chat,
     {
       text: messaggio,
       contextInfo: { mentionedJid: mentions },
-      footer: '𝚃𝙷𝙴 𝙿𝚄𝙽𝙸𝚂𝙷𝙴𝚁-𝙱𝙾𝚃',
+      footer: '💡 Seleziona un\'opzione rapida dal menu sottostante.',
       buttons: [
-        { buttonId: '.link', buttonText: { displayText: '🔗 𝐋𝐢𝐧𝐤 𝐝𝐞𝐥 𝐠𝐫𝐮𝐩𝐩𝐨' }, type: 1 },
-        { buttonId: '.menu', buttonText: { displayText: '📜 𝐌𝐞𝐧𝐮 𝐩𝐫𝐢𝐧𝐜𝐢𝐩𝐚𝐥𝐞' }, type: 1 }
+        { buttonId: '.link', buttonText: { displayText: '🔗 LINK GRUPPO' }, type: 1 },
+        { buttonId: '.menu', buttonText: { displayText: '📜 MENU PRINCIPALE' }, type: 1 }
       ],
       headerType: 1
     },
@@ -131,4 +134,5 @@ ${listaAdmin}┃
 
 handler.command=['infogruppo','groupinfo','infogc']
 handler.group=true
+
 export default handler
