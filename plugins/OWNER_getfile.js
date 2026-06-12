@@ -1,5 +1,3 @@
-//Plugin by Gab, Lucifero & 333 staff
-
 import fs from 'fs'
 import syntaxError from 'syntax-error'
 import path from 'path'
@@ -54,19 +52,20 @@ let handler = async (m, { text, usedPrefix, command, __dirname, conn }) => {
 
   if (!text || args.length === 0) {
     return m.reply(
-`╔═ 📁 𝐅𝐈𝐋𝐄 𝐌𝐀𝐍𝐀𝐆𝐄𝐑 ═╗
-┃
+`╭━━━〔 📁 *FILE MANAGER* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Richiesta Parametri
+┃━━━━━━━━━━━━━━━━━━
 ┃ 🔍 *Utilizzo:*
-┃ ${usedPrefix + command} <nome file> [script|file]
-┃
+┃ ⮕ ${usedPrefix + command} <nome file> [script|file]
+┃ 
 ┃ 📌 *Esempi:*
-┃ ${usedPrefix}getplugin rpg_poker
-┃ ${usedPrefix}getfile config.js script
-┃
-┃ 💡 Puoi usare _ - . o spazi
-┃ nel nome, lo trova lo stesso!
-┃
-╚══════════════╝`.trim()
+┃  • ${usedPrefix}getplugin rpg_poker
+┃  • ${usedPrefix}getfile config.js script
+┃━━━━━━━━━━━━━━━━━━
+┃ _Il sistema supporta la ricerca flessibile,_
+┃ _ignorando spazi, trattini e punti._
+╰━━━━━━━━━━━━━━━━━━┈`.trim()
     )
   }
 
@@ -92,50 +91,52 @@ let handler = async (m, { text, usedPrefix, command, __dirname, conn }) => {
 
     if (simili.length === 0) {
       return m.reply(
-`╔═ ❌ 𝐅𝐈𝐋𝐄 𝐍𝐎𝐍 𝐓𝐑𝐎𝐕𝐀𝐓𝐎 ═╗
-┃
-┃ 📂 File cercato:
-┃ *${filename}*
-┃
-┃ 😕 Nessun file simile trovato.
-┃
-╚══════════════╝`
+`╭━━━〔 ❌ *FILE NON TROVATO* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Errore Archivio
+┃━━━━━━━━━━━━━━━━━━
+┃ 📂 *Target:* ${filename}
+┃ ⚠️ *Esito:* Nessun file simile trovato.
+╰━━━━━━━━━━━━━━━━━━┈`
       )
     }
 
     const barre = simili.map((x, i) => {
       const filled = Math.round(x.score / 10)
-      const bar    = '█'.repeat(filled) + '░'.repeat(10 - filled)
-      return `┃ ${i + 1}. [${bar}] ${x.score}%\n┃    ${x.file}`
+      const bar    = '█'.repeat(filled) + '▒'.repeat(10 - filled)
+      return `┃  ${i + 1}. [${bar}] ${x.score}%\n┃     _${x.file}_`
     }).join('\n')
 
     const buttons = simili.map(x => [
-      `📄 ${x.file}  (${x.score}%)`,
+      `📄 ${x.file} (${x.score}%)`,
       `${usedPrefix + command} ${x.file}`
     ])
 
     return await conn.sendButton(m.chat,
-`╔═ 🔍 𝐅𝐈𝐋𝐄 𝐍𝐎𝐍 𝐓𝐑𝐎𝐕𝐀𝐓𝐎 ═╗
-┃
-┃ ❓ Cercavi: *${filename}*
-┃
-┃ 🎯 *File più simili:*
-┃
+`╭━━━〔 🔍 *FILE SUGGERITI* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Corrispondenze Parziali
+┃━━━━━━━━━━━━━━━━━━
+┃ ❓ *Cercavi:* ${filename}
+┃ 
+┃ 🎯 *Elementi rilevati nel sistema:*
 ${barre}
-┃
-┃ 👆 Tocca per selezionare
-╚══════════════╝`,
+┃━━━━━━━━━━━━━━━━━━
+┃ _Seleziona una delle opzioni sottostanti._
+╰━━━━━━━━━━━━━━━━━━┈`,
     '888 File Manager', null, buttons, m)
   }
 
   if (!option) {
     return await conn.sendButton(m.chat,
-`╔═ 📁 𝐅𝐈𝐋𝐄 𝐓𝐑𝐎𝐕𝐀𝐓𝐎 ═╗
-┃
-┃ ✅ *${filename}*
-┃
-┃ ❓ Come vuoi riceverlo?
-╚══════════════╝`,
+`╭━━━〔 📁 *FILE RILEVATO* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Lettura Completata
+┃━━━━━━━━━━━━━━━━━━
+┃ ✅ *File:* ${filename}
+┃ 
+┃ ❓ *Scegli la modalità di output:*
+╰━━━━━━━━━━━━━━━━━━┈`,
     '888 File Manager', null, [
       [`📄 Come script (testo)`, `${usedPrefix + command} ${text} script`],
       [`📎 Come documento`,      `${usedPrefix + command} ${text} file`  ]
@@ -155,20 +156,20 @@ ${barre}
           document: Buffer.from(fileContent, 'utf8'),
           mimetype: 'application/javascript',
           fileName: filename,
-          caption: `✅ Ecco il plugin: *${filename}*`
+          caption: `╭━━━〔 📎 *DOCUMENTO* 〕━━━┈\n┃ 📦 *Elemento:* ${filename}\n┃ ⚡ _Modulo inviato con successo._\n╰━━━━━━━━━━━━━━━━━━┈`
         }, { quoted: m })
       } else {
         await conn.sendMessage(m.chat, {
           document: fileContent,
           fileName: filename,
-          caption: `✅ Ecco il file: *${filename}*`
+          caption: `╭━━━〔 📎 *DOCUMENTO* 〕━━━┈\n┃ 📦 *Elemento:* ${filename}\n┃ ⚡ _File inviato con successo._\n╰━━━━━━━━━━━━━━━━━━┈`
         }, { quoted: m })
       }
     } else if (option === 'script') {
-      if (!isJS) throw '❌ L\'opzione script è disponibile solo per file JavaScript.'
+      if (!isJS) throw 'L\'opzione script è disponibile solo per file JavaScript.'
       await m.reply(`//Codice di ${filename}\n\n${fileContent}`)
     } else {
-      throw '❌ Opzione non valida! Usa *file* o *script*.'
+      throw 'Opzione non valida! Usa *file* o *script*.'
     }
 
     if (isJS) {
@@ -177,17 +178,18 @@ ${barre}
         allowReturnOutsideFunction: true,
         allowAwaitOutsideFunction: true
       })
-      if (error) await m.reply(`⛔️ Errore di sintassi in *${filename}*:\n\n${error}`.trim())
+      if (error) await m.reply(`╭━━━〔 ⛔ *SINTASSI CORROTTA* 〕━━━┈\n┃ ⚠️ *Modulo:* ${filename}\n┃\n┃ 💥 *Errore:* _${error}_\n╰━━━━━━━━━━━━━━━━━━┈`.trim())
     }
 
   } catch (err) {
     await m.reply(
-`╔═ ❌ 𝐄𝐑𝐑𝐎𝐑𝐄 ═╗
-┃
-┃ 📂 File: *${filename}*
-┃ ${err}
-┃
-╚══════════════╝`
+`╭━━━〔 ❌ *ERRORE PROCESSO* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Fallito
+┃━━━━━━━━━━━━━━━━━━
+┃ 📁 *File:* ${filename}
+┃ 💥 *Eccezione:* _${err}_
+╰━━━━━━━━━━━━━━━━━━┈`
     )
   }
 }
