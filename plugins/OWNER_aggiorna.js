@@ -53,21 +53,21 @@ let handler = async (m, { conn, text, command }) => {
 
         if (status.startsWith('R')) {
           const stats = statMap[newPath] || statMap[oldPath] || { plus: 0, minus: 0 }
-          return `\`🔁\` ${oldPath} \`→\` ${newPath} \`(+${stats.plus}/-${stats.minus})\``
+          return `┃  • 🔁 ${oldPath} → ${newPath} (+${stats.plus}/-${stats.minus})`
         }
 
         if (status === 'A') {
           const stats = statMap[oldPath] || { plus: 0, minus: 0 }
-          return `\`🆕\` ${oldPath} \`(+${stats.plus}/-${stats.minus})\``
+          return `┃  • 🆕 ${oldPath} (+${stats.plus}/-${stats.minus})`
         }
 
         if (status === 'D') {
           const stats = statMap[oldPath] || { plus: 0, minus: 0 }
-          return `\`🗑\` ${oldPath} \`(+${stats.plus}/-${stats.minus})\``
+          return `┃  • 🗑️ ${oldPath} (+${stats.plus}/-${stats.minus})`
         }
 
         const stats = statMap[oldPath] || { plus: 0, minus: 0 }
-        return `\`📄\` ${oldPath} \`(+${stats.plus}/-${stats.minus})\``
+        return `┃  • 📄 ${oldPath} (+${stats.plus}/-${stats.minus})`
       })
 
     execSync('git reset --hard origin/main && git pull', {
@@ -76,32 +76,42 @@ let handler = async (m, { conn, text, command }) => {
 
     await sleep(1500)
 
-    let resultMsg = `\`── ✅ UPDATE COMPLETE ──\``
-
+    let filesContent = ''
     if (updatedFiles.length > 0) {
-      resultMsg += `\n\n\`📦 File aggiornati:\` ${updatedFiles.length}\n\n${updatedFiles.join('\n')}`
+      filesContent = `┃ 📦 *FILE AGGIORNATI:* [ ${updatedFiles.length} ]\n┃\n${updatedFiles.join('\n')}`
     } else {
-      resultMsg += `\n\n\`ℹ️ Nessun file da aggiornare\``
+      filesContent = `┃ ℹ️ *INFORMAZIONE:* _Nessun file da aggiornare_`
     }
 
-    resultMsg += `\n\n\`[⚡] 888 SYSTEM\``
+    let resultMsg = `╭━━━〔 ✅ *SISTEMA AGGIORNATO* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Update Completato
+┃━━━━━━━━━━━━━━━━━━
+${filesContent}
+┃━━━━━━━━━━━━━━━━━━
+┃ _Il repository locale è stato sincronizzato_
+┃ _correttamente con il server remoto origin/main._
+╰━━━━━━━━━━━━━━━━━━┈`.trim()
 
     await conn.reply(m.chat, truncate(resultMsg), m)
     await m.react('✅')
 
   } catch (err) {
-    await conn.reply(
-      m.chat,
-      `\`── ❌ UPDATE ERROR ──\`\n\n\`💥\` ${err.message}\n\n\`[⚡] 888 SYSTEM\``,
-      m
-    )
+    let errorMsg = `╭━━━〔 ❌ *ERRORE UPDATE* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Fallito / Conflitto Git
+┃━━━━━━━━━━━━━━━━━━
+┃ 💥 *Dettaglio Errore:*
+┃ _${err.message}_
+┃━━━━━━━━━━━━━━━━━━
+┃ _Si prega di verificare manualmente lo stato_
+┃ _del server o l'integrità del repository git._
+╰━━━━━━━━━━━━━━━━━━┈`.trim()
+
+    await conn.reply(m.chat, errorMsg, m)
     await m.react('❌')
   }
 }
 
 handler.help = ['aggiorna']
-handler.tags = ['creatore']
-handler.command = /^(aggiorna|update|aggiornabot)$/i
-handler.owner = true
-
-export default handler
+handler.tags
