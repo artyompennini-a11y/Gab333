@@ -1,6 +1,3 @@
-//Plugin by Gab, Lucifero & 333 staff
-
-
 import { totalmem, freemem, cpus } from 'os'
 import process from 'process'
 import speed from 'performance-now'
@@ -22,7 +19,7 @@ const cpu = cpus()[0].model
   .replace(/\s+/g, ' ')
   .trim()
 
-const handler = async (m, { conn }) => {
+let handler = async (m, { conn }) => {
   const p = speed()
   await conn.sendPresenceUpdate('composing', m.chat)
   const ping = speed() - p
@@ -41,56 +38,36 @@ const handler = async (m, { conn }) => {
   const dlSpeed = (Math.random() * 100 + 50).toFixed(2)
   const ulSpeed = (Math.random() * 50 + 10).toFixed(2)
 
-  const text = `
-┏━━━━━━━━━━━━━━━━━━━━━
-┃ ⚡ *PERFORMANCE MONITOR*
-┃ 「 𝟴𝟴𝟴 𝗕𝗢𝗧 SYSTEM 」
-┗━━━━━━━━━━━━━━━━━━━━━
-
-╭─────────────────────
-│ 📊 *STATO SISTEMA*
-├─────────────────────
-│ 📡 *Ping:* ${ping.toFixed(2)} ms
-│ ⚡ *Velocità:* ${ping < 100 ? '🟢 Ottima' : ping < 300 ? '🟡 Buona' : '🔴 Lenta'}
-│ 🕒 *Uptime:* ${uptime}
-│ 🖥️ *Platform:* ${platform.toUpperCase()}
-│ 📦 *Node.js:* ${nodeVersion}
-╰─────────────────────
-
-╭─────────────────────
-│ 💾 *MEMORIA RAM*
-├─────────────────────
-│ 📊 *Totale:* ${formatBytes(ramtot)}
-│ 🔴 *Usata:* ${formatBytes(ramusata)} (${perc}%)
-│ 🟢 *Libera:* ${formatBytes(ramtot - ramusata)}
-│ 🤖 *Bot RAM:* ${formatBytes(ramBot)} (${percBot}%)
-│ 🗂️ *Heap Usato:* ${formatBytes(ramHeap)}
-│ 📦 *Heap Totale:* ${formatBytes(ramHeapTotal)}
-╰─────────────────────
-
-╭─────────────────────
-│ ⚙️ *PROCESSORE*
-├─────────────────────
-│ 🖥️ *CPU:* ${cpu}
-│ 🔁 *Threads:* ${cpuThreads} Core
-│ 🏗️ *Architettura:* ${cpuArch.toUpperCase()}
-│ 📈 *Carico:* ${((ramusata / ramtot) * 100).toFixed(0)}%
-╰─────────────────────
-
-╭─────────────────────
-│ 🌐 *CONNESSIONE*
-├─────────────────────
-│ 📥 *Download:* ${dlSpeed} Mbps
-│ 📤 *Upload:* ${ulSpeed} Mbps
-│ 🔗 *Latenza:* ${ping.toFixed(0)} ms
-│ 📶 *Stato:* ${ping < 200 ? '🟢 Stabile' : '🟡 Variabile'}
-╰─────────────────────
-
-┏━━━━━━━━━━━━━━━━━━━━━
-┃ ✨ Powered by *𝟴𝟴𝟴 𝗕𝗢𝗧*
-┃ 🚀 Performance Optimized
-┗━━━━━━━━━━━━━━━━━━━━━
-`.trim()
+  const text = `╭━━━〔 📊 *PERFORMANCE MONITOR* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Diagnostica Attiva
+┃━━━━━━━━━━━━━━━━━━
+┃ 📊 *STATO SISTEMA:*
+┃  • _Ping Latenza:_ ${ping.toFixed(2)} ms
+┃  • _Velocità:_ ${ping < 100 ? '🟢 Ottima' : ping < 300 ? '🟡 Buona' : '🔴 Lenta'}
+┃  • _Uptime Bot:_ ${uptime}
+┃  • _Piattaforma:_ ${platform.toUpperCase()}
+┃  • _Node.js:_ ${nodeVersion}
+┃ 
+┃ 💾 *MEMORIA RAM:*
+┃  • _Totale:_ ${formatBytes(ramtot)}
+┃  • _In Uso:_ ${formatBytes(ramusata)} (${perc}%)
+┃  • _Libera:_ ${formatBytes(ramtot - ramusata)}
+┃  • _RAM Bot:_ ${formatBytes(ramBot)} (${percBot}%)
+┃  • _Heap Usato:_ ${formatBytes(ramHeap)}
+┃  • _Heap Totale:_ ${formatBytes(ramHeapTotal)}
+┃ 
+┃ ⚙️ *PROCESSORE (CPU):*
+┃  • _Modello:_ ${cpu}
+┃  • _Core / Threads:_ ${cpuThreads} Core
+┃  • _Architettura:_ ${cpuArch.toUpperCase()}
+┃  • _Carico Stimato:_ ${((ramusata / ramtot) * 100).toFixed(0)}%
+┃ 
+┃ 🌐 *CONNESSIONE SERVER:*
+┃  • _Download Stima:_ ${dlSpeed} Mbps
+┃  • _Upload Stima:_ ${ulSpeed} Mbps
+┃  • _Rete:* ${ping < 200 ? '🟢 Stabile' : '🟡 Variabile'}_
+╰━━━━━━━━━━━━━━━━━━┈`.trim()
 
   await conn.reply(m.chat, text, m, { ...global.rcanal })
 }
