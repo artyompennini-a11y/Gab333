@@ -1,10 +1,8 @@
-//Plugin by Gab, Lucifero & 333 staff
-
 import fetch from "node-fetch";
 
 async function handler(m, { conn, args }) {
   const city = args.join(" ");
-  if (!city) return conn.sendMessage(m.chat, { text: "❗ 𝐒𝐜𝐫𝐢𝐯𝐢 𝐚𝐧𝐜𝐡𝐞 𝐥𝐚 𝐜𝐢𝐭𝐭𝐚̀!, 𝐄𝐬𝐞𝐦𝐩𝐢𝐨: `.𝐜𝐚𝐥𝐞𝐧𝐝𝐚𝐫𝐢𝐨 𝐑𝐨𝐦𝐚`" }, { quoted: m });
+  if (!city) return conn.sendMessage(m.chat, { text: "⚠️ *Inserisci il nome di una città.* _Esempio: .calendario Roma_" }, { quoted: m });
 
   const API_KEY = "060a6bcfa19809c2cd4d97a212b19273";
 
@@ -15,12 +13,12 @@ async function handler(m, { conn, args }) {
     meteoData = await resp.json();
     if (!meteoData || meteoData.cod !== 200) throw new Error();
   } catch {
-    return conn.sendMessage(m.chat, { text: "❌ Impossibile ottenere il meteo per quella città." }, { quoted: m });
+    return conn.sendMessage(m.chat, { text: "❌ _Impossibile recuperare i dati meteo per la città specificata._" }, { quoted: m });
   }
 
   const { weather, main } = meteoData;
-  const desc = weather[0]?.description || "nessuna info";
-  const temp = main?.temp !== undefined ? `${main.temp.toFixed(1)}°C` : "sconosciuta";
+  const desc = weather[0]?.description || "Nessuna info";
+  const temp = main?.temp !== undefined ? `${main.temp.toFixed(1)}°C` : "Sconosciuta";
 
   const now = new Date();
   const options = {
@@ -65,18 +63,18 @@ async function handler(m, { conn, args }) {
   const festeFisse = {
     "1-1": "Capodanno 🎉",
     "6-1": "Epifania 🧙‍♀️",
-    "25-4": "Festa della Liberazione",
+    "25-4": "Festa della Liberazione 🇮🇹",
     "1-5": "Festa dei Lavoratori 👷",
     "2-6": "Festa della Repubblica 🇮🇹",
-    "21-6": "Estate ☀️",
+    "21-6": "Solstizio d'Estate ☀️",
     "15-8": "Ferragosto 🌊",
-    "1-11": "Ognissanti",
-    "8-12": "Immacolata Concezione",
+    "1-11": "Ognissanti 🎃",
+    "8-12": "Immacolata Concezione ❄️",
     "25-12": "Natale 🎄",
-    "26-12": "Santo Stefano"
+    "26-12": "Santo Stefano 🪵"
   };
 
-  let festivita = "Nessuna";
+  let festivita = "Nessuna festa nazionale";
 
   const oggi = new Date();
   const meseCorrente = oggi.getMonth() + 1;
@@ -88,28 +86,27 @@ async function handler(m, { conn, args }) {
     Number(giorno) === pasqua.getDate() &&
     meseCorrente === pasqua.getMonth() + 1
   ) {
-    festivita = "Pasqua";
+    festivita = "Santa Pasqua 🕊️";
   } else if (
     Number(giorno) === pasquetta.getDate() &&
     meseCorrente === pasquetta.getMonth() + 1
   ) {
-    festivita = "Pasquetta";
+    festivita = "Lunedì dell'Angelo (Pasquetta) 🧺";
   }
 
-  const text = `
-╔════════════╗
-║ 📅 𝐂𝐀𝐋𝐄𝐍𝐃𝐀𝐑𝐈𝐎 𝟴𝟴𝟴 
-╠════════════╣
-║ 🗓 𝐆𝐢𝐨𝐫𝐧𝐨: *${giornoSettimana}*
-║ 📆 𝐃𝐚𝐭𝐚: *${giorno} ${mese} ${anno}*
-║ 🕒 𝐎𝐫𝐚: *${ora}:${minuto}:${secondo}*
-║ 🎉 𝐅𝐞𝐬𝐭𝐢𝐯𝐢𝐭𝐚̀: *${festivita}*
-╠════════════╣
-║ ☁️ 𝐌𝐞𝐭𝐞𝐨 𝐝𝐢 *${meteoData.name}:*
-║ 🌡 𝐓𝐞𝐦𝐩𝐞𝐫𝐚𝐭𝐮𝐫𝐚: *${temp}*
-║ 🧭 𝐂𝐨𝐧𝐝𝐢𝐳𝐢𝐨𝐧𝐢: *${desc}*
-╚════════════╝
-  `.trim();
+  const text = `╭━━━〔 📅 *CALENDARIO & INFO* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Sincronizzato (Fuso Roma)
+┃━━━━━━━━━━━━━━━━━━
+┃ 🗓️ *Giorno:* ${giornoSettimana.toUpperCase()}
+┃ 📆 *Data:* ${giorno} ${mese} ${anno}
+┃ 🕒 *Ora:* ${ora}:${minuto}:${secondo}
+┃ 🎉 *Festività:* _${festivita}_
+┃━━━━━━━━━━━━━━━━━━
+┃ ☁️ *METEO DI ${meteoData.name.toUpperCase()}:*
+┃  • _Temperatura:_ ${temp}
+┃  • _Condizioni:_ ${desc}
+╰━━━━━━━━━━━━━━━━━━┈`.trim();
 
   conn.sendMessage(m.chat, { text }, { quoted: m });
 }
@@ -117,4 +114,5 @@ async function handler(m, { conn, args }) {
 handler.command = /^calendario$/i;
 handler.tags = ["utility", "fun"];
 handler.help = ["calendario <città>"];
+
 export default handler;
