@@ -17,8 +17,6 @@ var handler = async (m, { conn, participants }) => {
         const isTargetAdmin = groupAdmins.includes(user)
 
         
-        
-       
         if (user === conn.user.jid) {
             return conn.reply(m.chat, '『 🤨 』 `Non posso rimuovermi da solo`', m);
         }
@@ -39,12 +37,10 @@ var handler = async (m, { conn, participants }) => {
         }
 
         
+       
         await conn.groupParticipantsUpdate(m.chat, [user], 'remove');
         
-       
-        await conn.sendMessage(m.chat, { 
-            sticker: { url: './media/sticker/bann.webp' } 
-        }, { quoted: m });
+        
 
     } catch (e) {
         console.error(e)
