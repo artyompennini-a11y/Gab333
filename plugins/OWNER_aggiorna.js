@@ -100,7 +100,7 @@ let handler = async (m, { conn, text, command }) => {
 }
 
 handler.help = ['aggiorna']
-handler.tags = ['creatore']
+handler.tags = ['owner']
 handler.command = /^(aggiorna|update|aggiornabot)$/i
 handler.owner = true
 
