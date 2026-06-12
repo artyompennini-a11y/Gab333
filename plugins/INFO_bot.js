@@ -1,7 +1,3 @@
-//Plugin by Gab, Lucifero & 333 staff
-
-
-
 let handler = async (m, { conn }) => {
   const stats = global.db.data.stats || {}
   const users = global.db.data.users || {}
@@ -19,7 +15,7 @@ let handler = async (m, { conn }) => {
     .slice(0, 5)
     .map(([name, s], i) => {
       const short = name.replace(/^.*[\\/]/, '').replace('.js', '')
-      return `┃ ${i + 1}. *${short}* — ${s.total} usi (${s.success} ok)`
+      return `┃  ${i + 1}. _${short}_ ⮕ ${s.total} usi (${s.success} ok)`
     }).join('\n')
 
   const topUsers = Object.entries(users)
@@ -27,7 +23,7 @@ let handler = async (m, { conn }) => {
     .slice(0, 5)
     .map(([jid, u], i) => {
       const num = jid.split('@')[0]
-      return `┃ ${i + 1}. *+${num}* — ${u.comandiEseguiti || 0} comandi`
+      return `┃  ${i + 1}. _+${num}_ ⮕ ${u.comandiEseguiti || 0} comandi`
     }).join('\n')
 
   const uptime = process.uptime()
@@ -39,29 +35,35 @@ let handler = async (m, { conn }) => {
   const mem = process.memoryUsage()
   const memMB = (mem.rss / 1024 / 1024).toFixed(1)
 
-  await m.reply(
-`╔═ 📊 𝟴𝟴𝟴 𝗕𝗢𝗧 𝐁𝐎𝐓 𝐒𝐓𝐀𝐓𝐒  ═╗
-┃
-┃ ⏱️ Uptime: *${uptimeStr}*
-┃ 🧠 RAM: *${memMB} MB*
-┃
-┃ 👥 Utenti: *${totalUsers}*
-┃ 💬 Gruppi: *${totalGroups}*
-┃ 🔌 Plugin: *${activePlugins}/${totalPlugins}* attivi
-┃
-┃ ⚡ Comandi totali: *${totalCommands}*
-┃ ✅ Successi: *${totalSuccess}*
-┃ ❌ Errori: *${totalCommands - totalSuccess}*
-┃
-┃ 🏆 *Top 5 Plugin:*
-${topPlugins || '┃ Nessun dato'}
-┃
-┃ 👑 *Top 5 Utenti:*
-${topUsers || '┃ Nessun dato'}
-┃
-╚══════════════╝`)
+  const messaggio = `╭━━━〔 📊 *STATISTICHE GLOBALI* 〕━━━┈
+┃ *Bot:* 𝟴𝟴𝟴 𝗕𝗢𝗧
+┃ *Stato:* Resoconto Generale
+┃━━━━━━━━━━━━━━━━━━
+┃ 📈 *DIAGNOSTICA CORE:*
+┃  • _Uptime:_ ${uptimeStr}
+┃  • _Memoria RAM:_ ${memMB} MB
+┃  • _Moduli caricati:_ ${activePlugins}/${totalPlugins}
+┃ 
+┃ 👥 *RETE & UTENZA:*
+┃  • _Utenti unici:_ ${totalUsers}
+┃  • _Gruppi attivi:_ ${totalGroups}
+┃ 
+┃ ⚡ *TRAFFICO COMANDI:*
+┃  • _Processati totali:_ ${totalCommands}
+┃  • _Eseguiti con successo:_ ${totalSuccess} ✅
+┃  • _Falliti / Errori:_ ${totalCommands - totalSuccess} ❌
+┃ 
+┃ 🏆 *TOP 5 MODULI UTILIZZATI:*
+${topPlugins || '┃  _Nessun dato registrato_'}
+┃ 
+┃ 👑 *TOP 5 UTENTI ATTIVI:*
+${topUsers || '┃  _Nessun dato registrato_'}
+╰━━━━━━━━━━━━━━━━━━┈`.trim()
+
+  await m.reply(messaggio)
 }
 
 handler.command = /^botstats$/i
 handler.rowner = true
+
 export default handler
